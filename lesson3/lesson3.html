@@ -29,13 +29,68 @@
 			console.log(`Percent : ${percent }`);
 		}
 		percent_num(num, proc);
-		
+
 		function numbers_percents(num, proc) {
 				percent = num * (proc / 100);
 				console.log(`Percent : ${percent}`);
 			}
 		numbers_percents(200, 20);
 		numbers_percents(200, 20);
+
+		// function percent_num(num, proc) {
+		// 		percent = num * (proc / 100);
+		// 		console.log(`Percent : ${percent}`);
+		// 		return result;
+		// 	}
+
+		function percent_num22(num, discount) {
+					let result = num * (discount / 100);
+					return result;
+				}
+		let result = percent_num22(200, 17);
+		console.log(`Result: ${result}`);
+
+
+		var num2 = 100;
+		function func1() {
+			num2 *=2;
+		}
+		console.log(`num2 1: ${num2}`);
+		function func2() {
+			var num2 = 50;
+		}
+		console.log(`num2 2: ${num2}`);
+		function func3() {
+				 num2 ++;
+			}
+		console.log(`num2 3: ${num2}`);
+		func1();
+		func2();
+		func3();
+		console.log(`num2: ${num2}`);
+
+		// hoisting - browser interprets the code before executing it, so all variable declarations are moved to the top of their scope. And after that, the code is executed line by line. Example:
+		
+		hoisting();
+		function hoisting() {
+			var hoistingVar = 10;
+			console.log(`Hoisting: ${hoistingVar}`);
+		}	
+		
+		hoisting2();
+
+		function hoisting2() {
+			var hoistingVar2 = 5; // hoistingVar2 is declared without var, let, or const, so it becomes a global variable
+			console.log(`Hoisting2: ${hoistingVar2}`);
+		}
+		pie = "niam-niam";
+		console.log(pie);
+		var pie = "taim"; // hoisting - variable declaration is moved to the top, but not the assignment
+		
+
+
+
+
 
 	</script>
 
