@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!-- control+k+u = comment and control+k+c = uncomment -->
+	<p id="texti">Lorem ipsum dolor sit amet</p>
+	<select id="color" onchange="changeColor()">
+		<option value="black">בחר צבע</option>
+		<option value="blue">כחול</option>
+		<option value="green">ירוק</option>
+		<option value="red">אדום</option>
+		<option value="yellow">צהוב</option>
+		<option value="orange">כתום</option>
+		<option value="pink">ורוד</option>
+	</select>
+
+	<script>
+		function changeColor() {
+			document.getElementById("texti").style.color = 
+			document.getElementById("color").value;
+		}
+	</script>
+
+	<!-- onload - property at the body tag - makes all js code run after the page is loaded -->
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<h3>Discount calculator</h3>
+	<label for="price">Price</label>
+	<br>
+	<input type="number" id="price" placeholder="Enter price" />
+	<br>
+	<label for="discount">Discount</label>
+	<br>
+	<input type="number" id="discount" placeholder="Enter discount" />
+	<br>
+	<button onclick="calc()">Calculate</button>
+	<br>
+	<button onclick="reset()">Reset</button>
+	<br>
+	<p id="result"></p>
+
+	<script>
+		function calc() {
+			document.getElementById("result").innerHTML = document.getElementById("price").value*
+			(100 - document.getElementById("discount").value) /
+			 100;
+		}
+
+		function reset() {
+			document.getElementById("price").value = "";
+			document.getElementById("discount").value = "";
+			document.getElementById("result").innerHTML = "";
+		}
+	</script>
+
+
+</body>
+</html>

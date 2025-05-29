@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>variables</title>
+</head>
+<body>
+		<!-- 
+		var - basic variable - still in memory till the end of the program
+		let - variable that can be changed, clean itself from ram
+		const - constant variable that cannot be changed
+
+		-->
+
+		<script>
+			// string
+			var myName = "Alex";
+			// number
+			let myNumber = 5;
+			// boolean
+			let isStudent = true;
+			let isLoggedIn = false;
+			// null - empty value
+			let myNull = null;
+			// const - constant variable, cannot be changed, names of a variables saved 
+			const PI = 3.14;
+			// const = 8; // this will cause an error, because we cannot change the value of a constant variable
+			// undefined - variable that is not defined yet
+			let myUndefined;
+			myUndefined = "Hello"; // Or  myUndefined= 25; now myUndefined is defined
+
+			// name of variable have to be or english letters or underscore. other symbols have to be english or numbers
+			let _myVariable = "Hello"; // this is a valid variable name
+			
+			// let 3myVariable = "Hello"; // this is not a valid variable name, because it starts with a number
+
+			// variable names cannot be the same as reserved words in javascript
+			// let if = "Hello"; // this will cause an error, because if is a reserved word in javascript
+
+			let Age = 50; // this is a valid variable name, but it is not recommended to use capital letters in variable names, because it can cause confusion with classes
+
+			console.log(4+5); // this will print 9 in the console
+			console.log(myNumber + 5); // this will print 10 in the console, because myNumber is 5
+			console.log(myNumber); // this will print 5 in the console
+			console.log(myName); // this will print "Alex" in the console		
+			console.log(isStudent); // this will print true in the console	
+			
+			console.log("10" + "10"); // this will print "1010" in the console, because it is a string concatenation
+
+			console.log(10 + "10"); // this will print 1010 in the console, because it is a number addition to string concatenation
+
+			//let username = prompt("Enter your name: "); // this will prompt the user to enter their name and store it in the username variable
+			//console.log(username); // this will print the username in the console
+
+			//alert("Hello " + username + "!"); // this will alert the user with their name
+			// alert("Hello " + username + "!"); // this will alert the user with their name	
+
+			// with back tick ` (on "tilda" key)
+			//console.log(`Hello ${username}, welcome back!`); // this will print Hello Alex! in the console, if username is Alex 
+			
+
+			// operators (arithmetic):
+			// + - * / % ** ++ -- += -= *= /= %= **=
+			let num1 = 10, num2 = 50; // this is a valid way to declare multiple variables in one line
+			let num3 = 2,
+			num4 = 3; // this is another way to declare multiple variables in one line
+			// arithmetic operators:
+			console.log(num1 + num2); // this will print 60 in the console
+			console.log(num1 - num2); // this will print -40 in the console
+			console.log(num1 * num2); // this will print 500 in the console	
+			console.log(num1 / num2); // this will print 0.2 in the console
+			console.log(num1 % num2); // this will print 10 in the console, because 10 is the remainder of 10 divided by 50
+			console.log(num1 ** num2); // this will print 100
+			console.log(num1++); // this will print 10 in the console, and then num1 will be 11
+			console.log(++num1); // this will print 12 in the console, because num1 is incremented before it is printed	
+			console.log(num1--); // this will print 12 in the console, and then num1 will be 11
+			console.log(--num1); // this will print 10 in the console, because num1 is decremented before it is printed
+			console.log(num1 += 5); // this will print 15 in the console, because num1 is incremented by 5
+			console.log(num1 -= 5); // this will print 10 in the console, because num1 is decremented by 5
+			console.log(num1 *= 5); // this will print 50 in the console, because num1 is multiplied by 5
+			console.log(num1 /= 5); // this will print 10 in the console, because num1 is divided by 5
+			console.log(num1 %= 5); // this will print 0 in the console, because 10 divided by 5 has no remainder
+			console.log(num1 **= 5); // this will print 100000 in the console, because 10 to the power of 5 is 100000
+			// comparison operators:
+			console.log(num1 == num2); // this will print false in the console, because 10 is not equal to 50
+			console.log(num1 != num2); // this will print true in the console, because 10 is not equal to 50
+			console.log(num1 === num2); // this will print false in the console, because 10 is not equal to 50
+			console.log(num1 !== num2); // this will print true in the console, because 10 is not equal to 50
+			console.log(num1 > num2); // this will print false in the console, because 10 is not greater than 50
+			console.log(num1 < num2); // this will print true in the console, because 10 is less than 50
+			console.log(num1 >= num2); // this will print false in the console, because 10 is not greater than or equal to 50
+			console.log(num1 <= num2); // this will print true in the console, because 10 is less than or equal to 50
+			// logical operators:
+			console.log(num1 > 5 && num2 < 100); // this will print true in the console, because both conditions are true
+			console.log(num1 > 5 || num2 < 100); // this will print true in the console, because at least one condition is true
+			console.log(!(num1 > 5)); // this will print false in the console, because the condition is true and the not operator negates it
+			// type conversion:
+			let strNum = "10"; // this is a string
+			console.log(Number(strNum)); // this will print 10 in the console, because the string is converted to a number
+			console.log(String(num1)); // this will print "10" in the console, because the number is converted to a string
+			console.log(Boolean(num1)); // this will print true in the console, because 10 is a truthy value
+			console.log(Boolean(0)); // this will print false in the console, because 0 is a falsy value
+			console.log(Boolean("")); // this will print false in the console, because an empty string is a falsy value
+			console.log(Boolean(null)); // this will print false in the console, because null is a falsy value
+			console.log(Boolean(undefined)); // this will print false in the console, because undefined is a falsy value
+			console.log(Boolean(NaN)); // this will print false in the console, because NaN is a falsy value
+			// console.log(Boolean("Hello")); // this will print true in the console, because a non-empty string is a truthy value
+			// console.log(Boolean(1)); // this will print true in the console, because 1 is a truthy value
+
+			console.log(2%2); // this will print 0 in the console, because 2 divided by 2 has no remainder
+			console.log(2%3); // this will print 2 in the console, because 2 divided by 3 has a remainder of 2
+			console.log(10%3); // this will print 1 in the console, because 10 divided by 3 has a remainder of 1
+			console.log(10%2); // this will print 0 in the console, because 10 divided by 2 has no remainder
+		</script>
+
+		<script>
+			var x = 5; // this is a global variable, accessible anywhere in the script
+			{
+				let x = 10; // this is a block-scoped variable, accessible only within this block
+			}
+			console.log(x); // this will print 5 in the console, because the variable x inside the block is not accessible outside the block
+		</script>
+
+		
+</body>
+</html>
