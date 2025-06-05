@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<title>Document</title>
+</head>
+<body>
+	<h2>TArgil 1 </h2>
+	<p>שאלה 1
+	צרו דף html ובו כותרת 1h עם שמכם המלא
+	כתבו סקריפט המוסיף לדף פסקה ובה שם הרחוב והעיר בה אתם גרים. שם העיר בלבד צריך להיות בכתב
+	מודגש.
+	אין צורך להשתמש ב-CSS.</p>
+	<div class="container-sm">
+		<div class="container-sm">Hello</div>
+		<h1>Hi, I'm Alex! </h1>
+		<script>
+			document.write("<div>First exercise: <strong> Strong Street name </strong></div>");
+		</script>
+		<button type="button" class="btn btn-primary">Base class</button>
+	</div>
+	
+	<h2>targil 2</h2>
+	<p>
+		שאלה 2
+		צרו דף html ובו פסקה עם שם החיה האהובה עליכם וכפתור בשם change, שבעת לחיצה עליו, צבע הרקע
+		של הדף ישתנה לצבע כחול וצבע הטקסט ישתנה ללבן.
+	</p>
+	<div class="container-sm" id="zebra_container">
+		<div class="container-sm">Hello</div>
+		<h1 id="zebra_h1">The animal: Zebra</h1>
+		<img
+			src="https://www.treehugger.com/thmb/qFhPReYPPaVgTtHBOthYeMJVeZ0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1043597638-49acd69677d7442588c1d8930d298a59.jpg"
+			alt="zebra" style="height: 150px; width: 150px;">
+		<button type="button" class="btn btn-primary" onclick="changeColor()">Change color</button>
+		<script>
+			function changeColor() {
+				document.getElementById("zebra_h1").style.color = "white";
+				document.getElementById("zebra_container").style.backgroundColor = "blue";
+			}
+		</script>
+	</div>
+
+	<h2>Targil 3</h2>
+	<p>
+		צרו דף html עם התצוגה הבאה:
+		
+		בעת לחיצה על כל אחד מהכפתורים, צבע הכותרת משתנה לצבע הרשום בכפתור
+	</p>
+	<div class="container-sm" id="zebra_container">
+		<div class="container-sm">Hello</div>
+		<h1 id="text_color">Choose your favorite color:</h1>
+
+		<button type="button" class="btn btn-primary" onclick="redColor()">Red</button>
+		<button type="button" class="btn btn-primary" onclick="greenColor()">Green</button>
+		<button type="button" class="btn btn-primary" onclick="blueColor()">Blue</button>
+		<script>
+			function redColor() {
+				document.getElementById("text_color").style.color = "red";
+			}
+			function greenColor() {
+					document.getElementById("text_color").style.color = "green";
+				}
+			function blueColor() {
+					document.getElementById("text_color").style.color = "blue";
+				}
+		</script>
+	</div>
+
+	<div class="container-sm" id="zebra_container">
+		<div class="container-sm">Hello</div>
+		<h1 id="text_color2">Choose your favorite color:</h1>
+	
+		<button type="button" class="btn btn-primary" onclick="blackColor()">black</button>
+		<button type="button" class="btn btn-primary" onclick="salmonColor()">salmon</button>
+		<button type="button" class="btn btn-primary" onclick="lightblueColor()">lightblue</button>
+		<script>
+			function blackColor() {
+				document.getElementById("text_color2").style.color = "black";
+			}
+			function salmonColor() {
+				document.getElementById("text_color2").style.color = "salmon";
+			}
+			function lightblueColor() {
+				document.getElementById("text_color2").style.color = "lightblue";
+			}
+		</script>
+	</div>
+
+	<h2>Targil 4</h2>
+	<p>
+		צרו דף html עם התצוגה הבאה:
+		לוגו של פייסבוק ושלושת כפתורים לשינוי לרשתות חברתיות אחרות
+		בעת לחיצה על כל אחד מהכפתורים, התמונה תשתנה ללוגו הרלוונטי.
+	</p>
+	<div class="container-sm" id="social_container">
+		<div class="container-sm">Hello</div>
+		<h1 id="social_h1">Choose your favorite social network:</h1>
+		<img id="social_img" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+			alt="facebook logo" style="height: 150px; width: 150px;">
+		<br>
+		<button type="button" class="btn btn-primary" onclick="changeToFacebook()">Facebook</button>
+		<button type="button" class="btn btn-primary" onclick="changeToTwitter()">Twitter</button>
+		<button type="button" class="btn btn-primary" onclick="changeToInstagram()">Instagram</button>
+		
+		<script>
+			function changeToFacebook() {
+				document.getElementById("social_img").src = "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg";
+			}
+			function changeToTwitter() {
+				document.getElementById("social_img").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAAY1BMVEUDqfT///8Ap/QApPOu4PtHv/cXr/Xr+P7F6vw/uPYArPTw+v74/f+q4fsxs/Xc8/2h2vrT6/zk9f7Q7v245/xewfeW1/ra7/2N0vlTvvd5yvhfxfd80Plqxfdyw/cnt/a54vuJLYzMAAACo0lEQVRoge2aa5eCIBBAYUDwkWi+UrO1//8rl9x2swIdTc7ZD96Pu3GbJhgGjFBKJfcE2RThcanFhFI/ANjWTQhA4N/kvthcPeiFT4kMnLi1PZCEO3JrOyeeO7lHNp4nYxyqd3Z2dv4bsP3eeIeFqiybnjAHalGdsiiS2akWf3r0+4RT/wRV0AfxsL0DqLrApSlMJ+xQJnRM3jAGZZrQFiWHlnKrHc4H+kzUxZn+mz/5cR+B63bG1hNA8+q+kyE7lOD2uVNifLHudIwcSsbCft4N5RCcsRGD2uzOPXWJkwYh/7oPCN5nF8vMct/XfecFkZhfOZXd2yLsze6BGpP0e1pu8OZ5gC0rgxuhHhrIvxEyfVp57PpZ3BqRjwZFlXrMG3a0qGWJrWIsfR7IzyGDafkRX8H6l4USZdwLbzXWmpYjvvyyyjA+iav2yypfUHtFYpFY1j718QU3ZIHNboFj5XDxW9Hn88YRHTbneoUeslNiy4CRM1reyHnbCwrpfllEOPCTBdJ52zP4yUKIihbK6wVy4yKa4ICuLAPFvHGEv+zAqRZ9p+myxg5Cy0ZszMryq4kWHfySufKD7hTaGLdKm6WBQxHHBa56FUvjJizGJiVaNg+HyANsgbkuDlzbO2Tg6y5VcInpVh4uMPXL3mvP0c7mPV9/bQhBNT3TV6zNEYyc66v1DfB9lk0v7PIP3SBq68bxWdzAVG2vXvmqfMMvXmo5R9zw1Rq3KJumKduqmNpIM9yh8w3VySiaqbXccFzCASqd3P0PeWA+RuJgqrJ+kQn3Pr0LAXExhX8oLmqLaxZgTJz58ZRJ/RVImSUn3vWMbXeBA4yIXk8dPX8CAczB1dDPnN9cu7Ozs/NPcfrI0unDVqePiZ0+4Hb6aN7tjwoc/hziG6x9HERAlho0AAAAAElFTkSuQmCC";
+			}
+			function changeToInstagram() {
+				document.getElementById("social_img").src = "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png";
+			}
+		</script>
+
+
+	<br>
+	<br>
+	<h2>Targil 5</h2>
+	<p>
+		צרו דף html עם התצוגה הבאה:
+		בעת לחיצה על כפתור ה-calculate, יחושב מחיר לאחר הנחה ויופיע בפסקה מתחת לכפתורים.
+		בעת לחיצה על כפתור ה-reset, ינוקו הערכים שיש בתיבות ה-input.
+
+	</p>
+	<h3>Discount calculator</h3>
+	<label for="price">Price</label>
+	<br>
+	<input type="number" id="price" placeholder="Enter price" />
+	<br>
+	<label for="discount">Discount</label>
+	<br>
+	<input type="number" id="discount" placeholder="Enter discount" />
+	<br>
+	<button onclick="calc()">Calculate</button>
+	<br>
+	<button onclick="reset()">Reset</button>
+	<br>
+	<p id="result"></p>
+	
+	<script>
+		function calc() {
+			document.getElementById("result").innerHTML = document.getElementById("price").value *
+				(100 - document.getElementById("discount").value) /
+				100;
+		}
+
+		function reset() {
+			document.getElementById("price").value = "";
+			document.getElementById("discount").value = "";
+			document.getElementById("result").innerHTML = "";
+		}
+	</script>
+
+	</body>
+	</html>

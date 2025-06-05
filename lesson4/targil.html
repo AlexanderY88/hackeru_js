@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=., initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1 style="text-align: center;">Lamp:</h1>
+	<h2 style="text-align: center;">First way:</h2>
+	<button onclick="light(1)">On</button>
+	<button onclick="light(0)">Off</button>
+	<br>
+	<img id="image" src="/lesson4/lamp_off.png" alt="lamp img" style="height: 300px; width: 200px;">
+	<script>
+		function light(num) {
+			let img;
+			if (num == 1) {
+				document.getElementById("image").src = "/lesson4/lamp_on.png";
+			}
+			else if (num == 0) {
+				document.getElementById("image").src = "/lesson4/lamp_off.png";
+			} else {
+				console.log("Error");
+			}
+		}
+
+	</script>
+
+	<br>
+	<hr>
+	<br>
+	<h2 style="text-align: center;">Second way:</h2>
+	<button onclick="light2(1)">On 2</button>
+	<button onclick="light2(0)">Off 2</button>
+	<br>
+	<img id="image2" src="/lesson4/lamp_off.png" alt="lamp img" style="height: 300px; width: 200px;">
+
+	<script>
+		function light2(num) {
+			switch (num) {
+				case 1:
+					document.getElementById("image2").src = "/lesson4/lamp_on.png";
+					break;
+				case 0:
+					document.getElementById("image2").src = "/lesson4/lamp_off.png";
+					break;
+				default:
+					console.log("Error");
+			}
+		}
+
+	</script>
+
+	
+</body>
+</html>
