@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+	<title>HomeWork Lesson 4</title>
+	<style>
+		button {
+			border: 2px solid black;
+			background-color: lightgray;
+			border-radius: 5px;
+			height: 50px;
+			width: 120px;
+			padding: 5px;
+		}
+
+		input {
+			border: 2px solid black;
+			border-radius: 5px;
+			height: 50px;
+			width: 200px;
+			padding: 5px;
+		}
+
+		label {
+			font-weight: bold;
+			font-size: 35px;	
+		}
+
+		body {
+			margin: 50px;
+			text-align: center;
+		}
+
+		h2 {
+			font-weight: bold;
+			font-size: 35px;	
+		}
+
+		h1 {
+			font-weight: bold;
+			font-size: 50px;	
+		}
+
+	</style>
+</head>
+<body>
+	
+	<h1 style="text-align: center;">Home Work Lesson 4 </h1>
+
+	<h2>Exercise 1 + 2 </h2>
+	<div>
+		<form action="">
+			<label for="text">Grade:</label>
+			<input type="number" id="grade" name="grade" placeholder="Enter your grade">
+			<button type="button" onclick="checkGrade()">Check Grade</button>
+			<button id="reset" onclick="reset()">Reset</button>
+			<p id="result"></p>
+			
+		</form>
+		<script>
+			var grade = document.getElementById("grade");
+			function checkGrade() {
+				let grade = document.getElementById("grade").value;
+				let result = document.getElementById("result");
+				if (grade < 0 || grade > 100 || grade === "") {
+					result.innerHTML = "Please enter a valid grade between 0 and 100.";
+					result.style.color = "red";
+				} else if (grade >= 55) {
+					result.innerHTML = "Congratulations! You passed the test.";
+					result.style.color = "green";
+				} else {
+					result.innerHTML = "Sorry, you did not pass the test.";
+					result.style.color = "red";
+				} 
+			}
+			function reset() {
+				document.getElementById("grade").value = "";
+				document.getElementById("result").innerHTML = "";
+			}
+		</script>
+	</div>
+	<br>
+	<hr>
+	<br>
+	<div>
+		<h2>Exercise 3</h2>
+		
+		<br>
+		<form action="login">
+			<input type="text" id="username" name="username" placeholder="Username here" required>
+			<input type="password" id="password" name="password" placeholder="Password here" required>
+			<button type="button" onclick="login()" id="loginBtn" disabled>Login</button>
+
+			<!-- script to improve the functionality - while user not entering input in 2 fields, the button is disabled - made with copilot help  -->
+			<script>
+				document.getElementById("username").addEventListener("input", checkInputs);
+				document.getElementById("password").addEventListener("input", checkInputs);
+				// addEventListener is used to listen for input events on the username and password fields.
+				// When the user types in either field, the checkInputs function is called to enable or disable the login button.
+				function checkInputs() {
+					const username = document.getElementById("username").value;
+					const password = document.getElementById("password").value;
+					document.getElementById("loginBtn").disabled = !(username && password);
+					// The login button is enabled only if both fields are not empty.
+					// If either field is empty, the button remains disabled.
+					//("loginBtn").disabled = !(username && password) - This line checks if both the username and password fields have values.
+				}
+			</script>
+		</form>
+		<script>
+			var username = "Alex88";
+			var password = "12345";
+			function login() {
+				let inputUsername = document.getElementById("username").value;
+				let inputPassword = document.getElementById("password").value;
+				if (inputUsername === username && inputPassword === password) {
+					alert("User logged in");
+				} else {
+					alert("Invalid username or password");
+				}
+			}
+		</script>
+	</div>
+
+	<br>
+	<hr>
+	<br>
+	<div>
+		<h2>Exercise 4</h2>
+		<p>BMI calculator</p>
+		<form action="bmi_calculation">
+			<input type="number" id="weight" name="weight" placeholder="Enter your weight in kg" required>
+			<input type="number" id="height" name="height" placeholder="Enter your height in cm" required>
+			<button type="button" onclick="calculateBMI()">Calculate BMI</button>
+			<p id="bmiResult"></p>
+		</form>
+		<script>
+			function calculateBMI () {
+				let weight = document.getElementById("weight");
+				let height = document.getElementById("height");
+				let bmiResult = document.getElementById("bmiResult");
+
+				if (weight.value === "" || height.value === "") {
+					bmiResult.innerHTML = "Please enter both weight and height.";
+					bmiResult.style.color = "red";
+				} 
+				else if (weight.value <= 0 || height.value <= 0) {
+					bmiResult.innerHTML = "Weight and height must be positive numbers.";
+					bmiResult.style.color = "red";
+				} 
+				else {
+					let bmi_calculation = weight.value / ((height.value / 100) ** 2);
+					if (bmi_calculation < 18.5) {
+						bmiResult.innerHTML = "Your BMI is " + bmi_calculation.toFixed(2) + ". You are underweight.";
+						//bmi_calculation.toFixed(2) means that the BMI value will be rounded to 2 decimal places.
+						//toFixed(2) is a method that formats a number using fixed-point notation. Copilot helped me with this.
+						//It is used to display the BMI value with two decimal places.
+						bmiResult.style.color = "blue";
+					} else if (bmi_calculation >= 18.5 && bmi_calculation < 24.9) {
+						bmiResult.innerHTML = "Your BMI is " + bmi_calculation.toFixed(2) + ". You have a normal weight.";
+						bmiResult.style.color = "green";
+					} else if (bmi_calculation >= 25 && bmi_calculation < 29.9) {
+						bmiResult.innerHTML = "Your BMI is " + bmi_calculation.toFixed(2) + ". You are overweight.";
+						bmiResult.style.color = "orange";
+					} else {
+						bmiResult.innerHTML = "Your BMI is " + bmi_calculation.toFixed(2) + ". You are obese.";
+						bmiResult.style.color = "red";
+					}
+				}
+			}
+		</script>
+
+	</div>
+	<br>
+	<hr>
+	<br>
+	<div>
+		<h2>Exercise 5</h2>
+		<p>Choose a country: </p>
+		<select id="flags" name="flags" onchange="showFlag()">
+			<option value="option1">Israel</option>
+			<option value="option2">Spain</option>
+			<option value="option3">USA</option>
+			<option value="option4">UK</option>
+		</select>
+		<br>
+		<img src="/lesson4/Israel.png" alt=" Israel flag" style="height: 300px; width: 500px;" id="flagImage">
+	</div>
+
+	<script>
+		function showFlag() {
+			let select = document.getElementById("flags");
+			let flagImage = document.getElementById("flagImage");
+			switch (select.value) {
+				case "option1":
+					flagImage.src = "./Israel.png";
+					flagImage.alt = "flag of Israel";
+					break;
+				case "option2":
+					flagImage.src = "./Spain.png";
+					flagImage.alt = "flag of Spain";
+					break;
+				case "option3":
+					flagImage.src = "./USA.png";
+					flagImage.alt = "flag of USA";
+					break;
+				case "option4":
+					flagImage.src = "./uk.png";
+					flagImage.alt = "flag of UK";
+					break;
+				default:
+					flagImage.src = "./Israel.png";
+					flagImage.alt = "flag of Israel";
+			}
+		}
+	</script>
+</body>
+</html>
