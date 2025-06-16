@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh; /* Make body at least full viewport height */
+				margin: 0;
+				background-color: #f0f0f0;
+				font-family: Arial, sans-serif;
+		}
+
+		canvas {
+				border: 2px solid #333;
+				background-color: #fff;
+				display: block; /* Remove extra space below canvas */
+		}
+
+		h1 {
+				color: #333;
+				margin-bottom: 20px;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>My Simple Browser Game</h1>
+	<canvas id="gameCanvas" width="800" height="600"></canvas>
+	<script src="game.js"></script>
+</body>
+
+<script>
+	// Get the canvas element and its 2D rendering context
+		const canvas = document.getElementById('gameCanvas');
+		const ctx = canvas.getContext('2d');
+
+		// Game variables
+		const playerSize = 50;
+		let playerX = (canvas.width - playerSize) / 2; // Start in the middle
+		let playerY = (canvas.height - playerSize) / 2;
+		const playerSpeed = 5;
+
+		const blocks = [
+				{ x: 100, y: 100, width: 50, height: 50 },
+				{ x: 300, y: 200, width: 100, height: 50 },
+				{ x: 500, y: 400, width: 50, height: 100 }
+			];
+
+			function checkCollision(playerX, playerY, blockX, blockY, blockWidth, blockHeight) {
+				return playerX < blockX + blockWidth &&
+					playerX + playerSize > blockX &&
+					playerY < blockY + blockHeight &&
+					playerY + playerSize > blockY;
+			}
+
+		// Keep track of pressed keys
+		const keys = {};
+
+		// Event listeners for keyboard input
+		document.addEventListener('keydown', (e) => {
+			keys[e.key] = true;
+		});
+
+		document.addEventListener('keyup', (e) => {
+			keys[e.key] = false;
+		});
+
+		// Game loop function
+		function gameLoop() {
+			update(); // Update game state
+			draw();   // Draw everything on the canvas
+			requestAnimationFrame(gameLoop); // Request the next frame
+		}
+
+		// Update game state (e.g., player movement)
+		function update() {
+				let newX = playerX;
+				let newY = playerY;
+
+				if (keys['ArrowUp'] || keys['w']) {
+					newY -= playerSpeed;
+				}
+				if (keys['ArrowDown'] || keys['s']) {
+					newY += playerSpeed;
+				}
+				if (keys['ArrowLeft'] || keys['a']) {
+					newX -= playerSpeed;
+				}
+				if (keys['ArrowRight'] || keys['d']) {
+					newX += playerSpeed;
+				}
+
+				// Check collisions with blocks
+				let canMove = true;
+				for (const block of blocks) {
+					if (checkCollision(newX, newY, block.x, block.y, block.width, block.height)) {
+						canMove = false;
+						break;
+					}
+				}
+
+				if (canMove) {
+					playerX = newX;
+					playerY = newY;
+				}
+
+				// Keep player within canvas bounds
+				playerX = Math.max(0, Math.min(canvas.width - playerSize, playerX));
+				playerY = Math.max(0, Math.min(canvas.height - playerSize, playerY));
+		}
+
+// Draw everything on the canvas
+function draw() {
+	// Clear the canvas
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	// Draw blocks
+	ctx.fillStyle = '#666';
+	for (const block of blocks) {
+		ctx.fillRect(block.x, block.y, block.width, block.height);
+	}
+
+	// Draw player
+	ctx.fillStyle = '#00f';
+	ctx.fillRect(playerX, playerY, playerSize, playerSize);
+}
+
+// Start the game loop
+		gameLoop();
+</script>
+</html>

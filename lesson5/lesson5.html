@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		// for
+		for (let i = 0; i <= 10; i++) {
+			console.log(i);
+		}
+		// ITERATION = REPEAT (till condition is met) - איטרציה = חזרה
+
+		console.log("For loop completed");
+
+		for (let i = 0; i <= 20; i++) {
+			if (i % 2 === 0) {
+				console.log(i);
+			}
+		}
+
+		console.log("Even numbers loop completed");
+		// another way to write the above loop
+		for (let i = 0; i <= 20; i += 2) {
+			console.log(i);
+		}
+
+		console.log("Even numbers loop completed");
+
+		for (let j = 1; j <= 8 ; j += 2) {
+			console.log(j);
+		}
+		console.log("Odd numbers loop completed");
+
+		for (let j = 10; j >= 1; j--) {
+			console.log(j);
+		}
+		console.log("Countdown loop completed");
+
+		let myName = "Alex";
+		for (let i = 0; i <= myName.length - 1; i++) {
+			console.log(myName[i]);
+		}
+		console.log("Name loop completed");
+		for (let i = 0; i < myName.length; i++) {
+				console.log(myName[i]);
+			}
+		console.log("Name loop completed again");
+
+		// while
+		console.log("While loop started");
+		let num = 0;
+		while (num <= 5) {
+			console.log(num);
+			num++;
+		}
+
+		console.log("While loop completed");
+		// another way to write the above loop
+		let i = 0;
+		while (i < myName.length) {
+			console.log(myName[i]);
+			i++;
+		}
+		console.log("Name while loop completed");
+
+		console.log("While loop with flag started");
+		let num1 = 0, flag = true;
+		while (flag) {
+			num1++;
+			if (num1 > 5) flag = false
+		}
+		console.log(num1);
+
+		// do while
+		console.log("Do while loop started");
+		let num2 = 0;
+		do {
+			console.log(num2);
+			num2++;
+		} while (num2 <= 5);
+
+		console.log("פונקציה שמקבלת שני מספרים ומחזירה את הגדול מביניהם");
+		let number1 = 15;
+		let number2 = 12;
+		function biggerNumber (number1, number2) {
+			if (number1 > number2) {
+				return number1;
+			} else if (number2 > number1) {
+				return number2;
+			} else {
+				return "Numbers are equal: " + number1;
+			}
+		}
+		let number3 = biggerNumber(number1, number2);
+		console.log(number3);
+		// another way to write the above function
+		function checkBigger(num1, num2) {
+			if (num1 >= num2) return num1;
+			else return num2;	// can be used without else, as the function will return before reaching this line if the first condition is true
+		}
+
+		console.log(checkBigger(5, 10));
+
+	</script>
+	
+</body>
+</html>

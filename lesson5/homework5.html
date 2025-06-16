@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<h1>Home Work Lesson 5 - loops</h1>
+
+	<h2>Targilim 1 - 2 in a console</h2>
+	<hr>
+	<script>
+		console.log("targil 1");
+		for (let i = 1; i <= 25; i++) {
+			console.log(i);
+		}
+
+		console.log("targil 2");
+		for (let i = 1; i <= 50; i++) {
+			if (i % 2 === 0) {
+				console.log(i);
+			}
+		}
+
+		console.log("targil 2 - another way");
+		for (let i = 2; i <= 50; i += 2) {
+			console.log(i);
+		}
+
+		
+
+	</script>
+
+<h2>Exercise 3</h2>
+<input type="number" id="inputNumber" placeholder="Enter a number" required>
+<button id="checkButton" onclick="showTheNumbers()">Check</button>
+<button id="reset" onclick="reset()">Reset</button>
+<div id="resultsContainer"></div>
+
+	<script>
+		function reset() {
+				let generatedParagraphs = document.querySelectorAll("p");
+				generatedParagraphs.forEach(p => p.remove());
+				document.getElementById("resultsContainer").innerHTML = "";
+				document.getElementById("inputNumber").value = "";
+			}
+
+		function showTheNumbers() {
+			let generatedParagraphs = document.querySelectorAll("p");
+			generatedParagraphs.forEach(p => p.remove());
+			let number = document.getElementById("inputNumber").value;
+			for (let i = 0; i <= 5; i++) {
+				let newElement = document.createElement("p");
+				newElement.innerText = `${number} ^ ${i} = ${number**i}`;
+				document.getElementById("resultsContainer").appendChild(newElement);}
+		}
+		
+	</script>
+
+	<h2>Exercise 4</h2>
+	<input type="number" id="inputA1" placeholder="Enter a1" required>
+	<input type="number" id="inputQ" placeholder="Enter q" required>
+	<input type="number" id="inputN" placeholder="Enter n" required>
+	<button id="calculateButton" onclick="calculateGeometricSeries()">Calculate</button>
+	<p id="p_element">The numbers in series are:</p>
+
+	<script>
+		function calculateGeometricSeries() {
+				// Get data from input
+				let a1 = parseFloat(document.getElementById("inputA1").value);
+				let q = parseFloat(document.getElementById("inputQ").value);
+				let n = parseInt(document.getElementById("inputN").value);
+				// Clear previous results
+				   document.getElementById("p_element").innerHTML = "The numbers in series are: ";
+				// // Calculate and display each term
+				// for (let i = 0; i < n; i++) {
+				// 	let term = a1 * (q ** i);
+				// 	let spanElement = document.createElement("span");
+				// 	spanElement.innerText = term + " ";
+				// 	document.getElementById("p_element").appendChild(spanElement);
+				// }
+
+				// another way: 
+				for (let i = 0; i < n; i++) {
+					document.getElementById("p_element").innerHTML += `${a1 * (q ** i)}  &nbsp; `;
+				}
+		}
+
+
+
+	</script>
+
+</body>
+</html>
