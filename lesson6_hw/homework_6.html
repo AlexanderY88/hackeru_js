@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let arrey = [];
+        let food1 = "pizza", 
+            food2 = "burger", 
+            food3 = "pasta", 
+            food4 = "salad", 
+            food5 = "sushi";
+        arrey.push(food1, food2, food3, food4, food5);
+        function printArrey() { 
+            console.log(arrey[0] + " " + arrey[1] + " " + arrey[2] + " " + arrey[3] + " " + arrey[4]);
+        }
+                printArrey();
+
+        arrey[1] = "cake";
+        printArrey();
+        arrey.push("ice cream");
+        function printArrey2() {
+            for (let i = 0; i < arrey.length; i++) {
+                console.log(arrey[i]);
+            }
+        }
+        printArrey2();
+
+    </script>
+
+    <script>
+        let numbers = [5, 10, 15, 20, 25, 31,50, 6, 2, 17];
+        function findMax() {
+            let max = numbers[0];
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i] > max) 
+                    {max = numbers[i];}
+            }
+            return max;
+        }
+        console.log("Max number is: " + findMax());
+    </script>
+
+    <script>
+        let fonts = [10, 20, 30, 40, 50, 60];
+        let animals = ["cat", "dog", "fish", "bird", "lion", "zebra"];
+        function animalsFonts() {
+            for (let i = 0; i < animals.length; i++) {
+                document.write("<p style='font-size:" + fonts[i] + "px'>" 
+                    + animals[i] + "</p>");   
+            }
+        }
+        animalsFonts();
+    
+    </script>
+
+    <hr>
+    <h2>Excersize 4</h2>
+    <hr>
+    <br>
+    <button id="back" onclick="back" style="width:40px; height:40px; border-radius: 50%; background-image: url('https://img.freepik.com/premium-vector/dark-color-vector-icon-gray-checkered-background-with-gradient_1135708-16211.jpg?uid=R190799109&ga=GA1.1.749258713.1750003154&semt=ais_hybrid&w=740'); object-fit: cover;"></button>
+    <img id="img" src="https://img.freepik.com/free-photo/beautiful-poppies-countryside-field_23-2149453443.jpg?ga=GA1.1.749258713.1750003154&semt=ais_hybrid&w=740" alt="" class="img" style="width: 250px; height: auto;">
+    <button class="forward" style="width:40px; height:40px; border-radius: 50%; background-image: url('https://img.freepik.com/premium-vector/dark-color-vector-icon-gray-checkered-background-with-gradient_1135708-16211.jpg?uid=R190799109&ga=GA1.1.749258713.1750003154&semt=ais_hybrid&w=740'); transform: rotate(180deg); object-fit: cover;"></button></button>
+
+    <script>
+    function back() {
+        let num = 0;
+        let img = document.getElementById("img");
+    }
+    
+    </script>
+
+
+
+</body>
+</html>
