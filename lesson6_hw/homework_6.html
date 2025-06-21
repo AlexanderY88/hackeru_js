@@ -4,6 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+		<style>
+			.nav-button {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background-size: cover;
+				background-position: center;
+				border: none;
+				cursor: pointer;
+				margin: 0 10px;
+				margin-top: 320px;
+				bottom: 20px;
+			}
+		
+			.forward-button {
+				transform: rotate(180deg);
+			}
+		
+			.image-container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+			}
+
+			h2 {
+				text-align: center;
+				font-weight: bold;
+				font-size: 35px;	
+			}
+      
+		
+			</style>
 </head>
 <body>
     
@@ -62,19 +95,57 @@
     <h2>Excersize 4</h2>
     <hr>
     <br>
-    <button id="back" onclick="back" style="width:40px; height:40px; border-radius: 50%; background-image: url('https://img.freepik.com/premium-vector/dark-color-vector-icon-gray-checkered-background-with-gradient_1135708-16211.jpg?uid=R190799109&ga=GA1.1.749258713.1750003154&semt=ais_hybrid&w=740'); object-fit: cover;"></button>
-    <img id="img" src="https://img.freepik.com/free-photo/beautiful-poppies-countryside-field_23-2149453443.jpg?ga=GA1.1.749258713.1750003154&semt=ais_hybrid&w=740" alt="" class="img" style="width: 250px; height: auto;">
-    <button class="forward" style="width:40px; height:40px; border-radius: 50%; background-image: url('https://img.freepik.com/premium-vector/dark-color-vector-icon-gray-checkered-background-with-gradient_1135708-16211.jpg?uid=R190799109&ga=GA1.1.749258713.1750003154&semt=ais_hybrid&w=740'); transform: rotate(180deg); object-fit: cover;"></button></button>
+		<div class="image-container">
+			<button id="back" onclick="back()" class="nav-button"
+				style="background-image: url('./back.png');">
+			</button>
+		
+			<img id="img" src="https://img.freepik.com/free-photo/beautiful-poppies-countryside-field_23-2149453443.jpg"
+				alt="slideshow image" style="width: 250px; height: 350px;">
+		
+			<button id="forward" onclick="forward()" class="nav-button forward-button"
+				style="background-image: url('./back.png');">
+			</button>
+		</div>
 
+		<br>
+		<br>
     <script>
+		let images = [];
+		images.push("https://img.freepik.com/free-photo/beautiful-poppies-countryside-field_23-2149453443.jpg");
+		images.push("./flowers2.jpg");
+		images.push("./flowers3.jpg");
+		images.push("./flowers4.jpg");
+
+    function changeImage(index) {
+      if (index < 0) {
+           index = images.length - 1;
+          } else if (index >= images.length) {
+            index = 0;
+          }
+          document.getElementById("img").src = images[index];
+            return index;
+        }
+
+		let currentIndex = 0;
+		function forward() {
+			currentIndex = (currentIndex + 1) % images.length;
+				currentIndex = changeImage(currentIndex);
+				//console.log(currentIndex);
+		}
+
     function back() {
-        let num = 0;
-        let img = document.getElementById("img");
+			currentIndex = (currentIndex - 1) % images.length;
+			currentIndex = changeImage(currentIndex);
+			//console.log(currentIndex);
     }
     
     </script>
 
-
+08-9949700 
+*4515
+/2
+*5678
 
 </body>
 </html>
