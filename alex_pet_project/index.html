@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="./scrypt.js" defer></script>
+	<link rel="stylesheet" href="mobile.css" media="screen and (max-width: 600px)">
+	<link rel="stylesheet" href="style.css" media="screen and (min-width: 601px)">
+	<title>Alex's first project</title>
+</head>
+<body>
+	<div id="header"></div>
+	<h2 id="hello_header">Hello at my Page</h2>
+	<h3 id="explanation_text">This is my mini-projects for the course "Full Stack Web Development"</h3>
+	<div id="time_calculator">
+		<h2 class="program_header">Calculation hours and minutes to percents </h2>
+		<p class="program_explanation">Enter begin hours and end hors to calculate how much time pass </p>
+		<div class="table_time">
+			<p class="table_first_line">Enter the start time using two digits for the hour in the "hours" field and two digits for the minutes in the "minutes"
+			field.</p>
+			<input type="number" id="start_hours" placeholder="Hours" min="0" max="23" oninput="validateTwoDigits(this)">
+			<input type="number" id="start_minutes" placeholder="Minutes" min="0" max="59" oninput="validateTwoDigits(this)">
+			<p class="table_first_line">Enter the end time using two digits for the hour in the "hours" field and two digits for the minutes in the "minutes"
+			field.</p>
+			<input type="number" id="end_hours" placeholder="Hours" min="0" max="23" oninput="validateTwoDigits(this)">
+			<input type="number" id="end_minutes" placeholder="Minutes" min="0" max="59" oninput="validateTwoDigits(this)">
+			<br>
+			<p id="result_time_calculation">Enter the values and press Calculate for result</p>
+			<button id="calculate_button" onclick="calculateTime()" >Calculate</button>
+			<button id="reset_button" onclick="resetTime()">Reset</button>
+		</div>
+
+	</div>
+</body>
+</html>
