@@ -120,6 +120,29 @@
 	</script>
 
 
+	<form action="">
+		<input type="date" id="date1">
+		<button type="submit" class="btn btn-primary">Submit</button>
+		<p id="result1">result</p>
+	</form>
+
+	<script>
+		let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		function check2(event) {
+			event.preventDefault();
+			let dateInput2 = document.getElementById("date1");
+			let result1 = document.getElementById("result1");
+			let dateValue = dateInput2.value;
+			if (!dateValue) {
+				result1.innerText = "Please select a date.";
+				return;
+			}
+			let date = new Date(dateValue);
+			result1.innerText = days[date.getDay()];
+		}
+		document.querySelectorAll("form")[1].addEventListener("submit", check2); // print day on a screen
+	</script>
+
 
 
 </body>
