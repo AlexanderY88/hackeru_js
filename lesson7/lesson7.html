@@ -145,7 +145,24 @@
 	console.log(reverse_arr([1,2,3,4,5]));
 	console.log(reverse_arr1([1, 2, 3, 4, 5]));
 
-
+			// בעיית מונים
+				// שאלה 7 מתרגילי מערכים
+				// כתוב פונקציה המקבלת מספר ומחזירה את כמות הספרות השונות בו
+				function countDigits(num) {
+					let counts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+					let diffDigits = 0;
+					while (num > 0) {
+						// הגדלת הקאונטר של ספרת האחדות
+						counts[num % 10]++;
+						num = Math.floor(num / 10);
+					}
+					for (let i = 0; i < counts.length; i++) {
+						if (counts[i] != 0) diffDigits++;
+					}
+					return diffDigits;
+				}
+				console.log(countDigits(235));
+				console.log(countDigits(27871));
 
 	</script>
 
