@@ -24,11 +24,11 @@
 		console.log(Math.min(10, 20, 8, 99)); // min number
 		console.log(Math.random()); // random number from 0 to 1 
 		console.log(Math.ceil(2.4)); // returns 3, because 3 is the smallest integer greater than or equal to 2.4.	 
-		console.log(); // print in console
-		console.log(); // Print a  
+		// Removed empty console.log(); as it does nothing
+		// console.log(); // Print a  
 
 		function randomNum() {
-			num = Math.floor((Math.random() * 10));
+			let num = Math.floor((Math.random() * 10));
 			console.log("random number: " + num);
 		}
 		//randomNum(); // function that return random num
@@ -48,7 +48,7 @@
 		console.log(date1);
 		console.log("day from a date: " + date1.getDay()); // day of a week in a date
 
-		console.log()
+		// Removed empty console.log(); as it does nothing
 
 		function message() {
 			console.log("Hello after 5 seconds")
