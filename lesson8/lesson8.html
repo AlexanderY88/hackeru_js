@@ -1,41 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 </head>
+
 <body>
-	
+
 
 	<script>
 
 		// סיפריה MATH
 		console.log(Math.PI); // PI number
 		console.log(Math.sqrt(81)); // square root
-		console.log(Math.pow(2,3)); // like ** (power)
+		console.log(Math.pow(2, 3)); // like ** (power)
 		console.log(Math.abs(-12)); // like * -1
 		console.log(Math.round(3.6)); // round to the near number
-    console.log(Math.round(2.5)); 
+		console.log(Math.round(2.5));
 		console.log(Math.floor(2.9)); // cut numbers after root 
 		console.log(Math.max(10, 100, 80, 70));  // max number
 		console.log(Math.min(10, 20, 8, 99)); // min number
 		console.log(Math.random()); // random number from 0 to 1 
 		console.log(Math.ceil(2.4)); // returns 3, because 3 is the smallest integer greater than or equal to 2.4.	 
-		console.log(); //  
+		console.log(); // print in console
+		console.log(); // Print a  
 
 		function randomNum() {
-			num = Math.floor((Math.random() * 10 ));
-			console.log("random number: "+ num);
+			num = Math.floor((Math.random() * 10));
+			console.log("random number: " + num);
 		}
-		randomNum(); // function that return random num
+		//randomNum(); // function that return random num
 
-		console.log(Math.floor(Math.random()*10));
+		console.log(Math.floor(Math.random() * 10));
 
+		// function returns random number from 0 to 99  
+		function randomNumberTill100() {
+			console.log(Math.floor(Math.random() * 100));
+		}
+		// Returns numbers from 0 to 99 And print
 
+		let today = new Date(); // return current date and place (country) 
+		console.log(today);
+
+		let date1 = new Date("1988-05-02"); // create value date with specific date (ISO format)
+		console.log(date1);
+		console.log("day from a date: " + date1.getDay()); // day of a week in a date
+
+		console.log()
+
+		function message() {
+			console.log("Hello after 5 seconds")
+		}
+		setTimeout(message, 5000);
+
+		//setInterval
+		// Example: print in a console 10 numbers every 2 seconds
+		let num = 1;
+		function show() {
+			console.log(num);
+			num++;
+			if (num > 10) clearInterval(id); // when num is > 10, clear interval - stop the function
+		}
+
+		let id = setInterval(show, 2000); // start function and print every 2 seconds
 
 	</script>
 
+	<form action="">
+		<input type="date">
+		<button type="submit" class="btn btn-primary">Submit</button>
+		<p id="result">result</p>
+	</form>
+	<script>
+		let dateInput = document.querySelector('input[type="date"]');
+		let result = document.getElementById("result");
 
+		function dayOfDate(event) {
+			event.preventDefault();
+			let dateValue = dateInput.value;
+			if (!dateValue) {
+				result.textContent = "Please select a date.";
+				return;
+			}
+			let date = new Date(dateValue);
+			let day = date.getDay();
+			let dayName;
+			switch (day) {
+				case 0:
+					dayName = "Sunday";
+					break;
+				case 1:
+					dayName = "Monday";
+					break;
+				case 2:
+					dayName = "Tuesday";
+					break;
+				case 3:
+					dayName = "Wednesday";
+					break;
+				case 4:
+					dayName = "Thursday";
+					break;
+				case 5:
+					dayName = "Friday";
+					break;
+				case 6:
+					dayName = "Saturday";
+					break;
+				default:
+					dayName = "Unknown";
+			}
+			result.textContent = "Day of week: " + dayName;
+		}
+
+		document.querySelector("form").addEventListener("submit", dayOfDate); // star function 			
+		// explanation of a function: pick day by specific date and picks number of day. After this by the number send a text with specific day to client  
+
+	</script>
 </body>
+
 </html>
