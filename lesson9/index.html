@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Traffic Lights</h1>
+    <div class="container" >
+        <div id="box1" class="box"></div>
+        <div id="box2" class="box"></div>
+        <div id="box3" class="box"></div>
+    </div>
+
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: fr;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            margin: 1rem;
+            clip-path: circle(50% at 50% 50%);
+        }
+
+    </style>
+
+    <script>
+
+        let state = 0;
+        function trafficLights() {
+            let num = state % 4;
+            switch (num) {
+                case 0:
+                   document.getElementById("box1").style.backgroundColor = "red"; 
+                   state ++;
+                   document.getElementById("box2").style.backgroundColor = "gray"; 
+                   document.getElementById("box3").style.backgroundColor = "gray";
+                    break;
+                case 1:arguments
+                    document.getElementById("box1").style.backgroundColor = "red"; 
+                    document.getElementById("box2").style.backgroundColor = "yellow"; 
+                    state ++;
+                    break;
+                case 2:
+                    document.getElementById("box1").style.backgroundColor = "gray";
+                    document.getElementById("box2").style.backgroundColor = "gray";
+                    document.getElementById("box3").style.backgroundColor = "green";
+                    state ++;
+                    break;
+                case 3:
+                    document.getElementById("box3").style.backgroundColor = "gray";
+                    document.getElementById("box2").style.backgroundColor = "yellow"; 
+                    document.getElementById("box1").style.backgroundColor = "gray";
+                    state = 0;
+
+                default:
+                    break;
+            }
+        }
+
+        setInterval(trafficLights, 10000); 
+    </script>
+
+<h2 style="text-align: center;">Pictures array</h2>
+<img src="./images/brownies.jpg" alt="food" id="food">
+
+<script>
+    const pictures = [
+        "./images/brownies.jpg",
+        "./images/falafel.webp",
+        "./images/pasta.webp",
+        "./images/pizza.jpg",
+        "./images/salad.jpg",
+    ];
+
+    // for (let i=0; i<pictures.length; i++) {
+    //     setTimeout(changeImg, 1000*i)
+    // }
+
+    let index = 0;
+    function changeImg() {
+        document.getElementById("food").src = pictures[index];
+        index++;
+        if (index >= pictures.length) {
+            index = 0;
+        }
+        setTimeout(changeImg, 2000*index/2);
+    }
+    // Start the image rotation
+    changeImg();
+
+    
+    
+</script>
+
+
+</body>
+</html>

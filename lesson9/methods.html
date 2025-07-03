@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+    <script>
+
+    // ternary if 
+
+    function checkIfNumIsGreaterThan10(num) {
+        num > 10 ? console.log("bigger") : console.log("smaller");
+    }
+    // (condition) ? (what to do if true) : (what to do if false). Works only at one if else, cannot be used for multiple conditions like else if. 
+
+
+    let age = 17;
+    console.log(age >= 18 ? "beer" : "cola");
+
+    function multiple(x) {
+        return x * 2;
+    }
+    function calc5(x, y, _multiple) {
+        var num1 = (x % 2) +1;
+        var num2 = y % 5;
+        return _multiple(num1 + num2);
+    }
+
+    var result = calc5(9, 7, multiple);
+    console.log(result);
+
+    // function expression 
+    let func = function() {
+        console.log("Hello from function expression");
+    }
+    func();
+    // function declaration
+    function func2() {
+        console.log("Hello from function declaration");
+    }
+    func2();
+
+
+    // anonymous function, also known as a function expression, is a function that does not have a name for one-time use.
+    // It is often used as an argument to another function or as a callback function.
+    let func3 = function() {
+        console.log("Hello from anonymous function");
+    };
+    func3();
+
+    // arrow function
+    let func4 = () => {
+        console.log("Hello from arrow function");
+    };
+    func4();
+
+    // arrow function with parameters
+    let func5 = (x, y) => {
+        console.log("Hello from arrow function with parameters", x, y);
+    };
+    func5(5, 10);
+
+    setTimeout(function() {
+        console.log("Hello from setTimeout");
+    }, 2000);
+
+    // setInterval
+    let interval = setInterval(function() {
+        console.log("Hello from setInterval");
+    }, 1000);   
+
+    clearInterval(interval); // to stop the interval
+
+    // Important! Expressions are not hoisted, so you cannot call them before they are defined.
+
+    // clearInterval(interval); // to stop the interval
+    // clearTimeout(timeout); // to stop the timeout
+    // setTimeout and setInterval are asynchronous functions, they do not block the execution of the code.
+    // setTimeout is used to execute a function after a certain amount of time, while setInterval is used to execute a function repeatedly at a certain interval.
+    // setTimeout is a function that takes two arguments: a function to execute and a time in milliseconds to wait before executing the function.
+    // setInterval is a function that takes two arguments: a function to execute and a time in milliseconds to wait between executions of the function.
+
+
+    function myFunction(str1) {
+        return function(str2) {
+            return str1 + " " + str2;
+        };
+    }
+
+    console.log(myFunction("My name is")("Alex"));
+    // This is a closure, a function that returns another function. The inner function has access to the variables of the outer function, even after the outer function has finished executing. 
+
+
+    // Пример 1: Счетчик
+function createCounter() {
+    let count = 0;
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+let counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3
+
+// Пример 2: Приветствие с настраиваемым языком
+function createGreeting(language) {
+    return function(name) {
+        if (language === "ru") {
+            return "Привет, " + name + "!";
+        } else if (language === "en") {
+            return "Hello, " + name + "!";
+        } else {
+            return "Hi, " + name + "!";
+        }
+    };
+}
+
+let russianGreeting = createGreeting("ru");
+let englishGreeting = createGreeting("en");
+
+console.log(russianGreeting("Momo")); // "Привет, Анна!"
+console.log(englishGreeting("John")); // "Hello, John!"
+
+// Пример 3: Калькулятор с операциями
+function createCalculator(operation) {
+    return function(a, b) {
+        if (operation === "add") {
+            return a + b;
+        } else if (operation === "multiply") {
+            return a * b;
+        } else if (operation === "subtract") {
+            return a - b;
+        }
+    };
+}
+
+let adder = createCalculator("add");
+let multiplier = createCalculator("multiply");
+
+console.log(adder(5, 3)); // 8
+console.log(multiplier(4, 6)); // 24
+
+
+
+// self invoking function
+(function() {
+    console.log("Hello from self invoking function");
+})(); // This function is executed immediately after it is defined. It is often used to create a private scope, so that variables defined inside the function are not accessible from the outside.The self-invoking function is an anonymous function that is executed immediately after it is defined. It is often used to create a private scope, so that variables defined inside the function are not accessible from the outside.
+
+    // Example of self invoking function
+    (function() {
+        let x = 10;
+        console.log("Hello from self invoking function", x);
+    })(); // This will print "Hello from self invoking function 10"
+
+    // Example of self invoking function with parameters
+    (function(x, y) {
+        console.log("Hello from self invoking function with parameters", x, y);
+    })(5, 10); // This will print "Hello from self invoking function with parameters 5 10"
+
+
+    // Example of self invoking function with return value
+    let result1 = (function(x, y) {
+        return x + y;
+    })(5, 10); // This will return 15
+
+    console.log("Result from self invoking function", result1); // This will print "Result from self invoking function 15"
+
+    let arr = function(arr) {
+        let result = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) result += 1;
+        }
+        return result;
+    }
+    console.log("the number of even numbers is " + arr([5, 6, 8, 4, 22, 100, 50, 47, 83, 20]));
+
+</script>
+    
+</body>
+</html>
