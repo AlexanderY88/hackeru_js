@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let grades = [70, 100, 85, 91, 88];
+      let findMax = function (numbers) {
+        let maxi = numbers[0];
+        for (let j = 1; j < numbers.length; j++) {
+          if (numbers[j] > maxi) maxi = numbers[j];
+        }
+        return maxi;
+      };
+      console.log(findMax(grades));
+
+      //
+      let ages = [18, 26, 32, 72];
+      ages.push(59);
+      console.log(ages);
+      ages.unshift(40);
+      console.log(ages);
+      //מחיקת 2 איברים החל מאינדקס 1
+      ages.splice(1, 2);
+      console.log(ages);
+      //הוספת 3 איברים החל אינדקס 1
+      ages.splice(1, 0, 52, 41, 62);
+      console.log(ages);
+
+      //תרגיל רשע שהתוצאה היא [5]
+      const length = 4;
+      const numbers = [];
+
+      for (var i = 0; i < length; i++); //שימו לב ל;
+      {
+        numbers.push(i + 1);
+      }
+
+      console.log(numbers);
+
+      //map - תפקידה לבצע מניולציה כלשהי על איברי המערך
+      // מחזירה מערך חדש
+
+      let prices = [50, 24, 170, 95, 60];
+      //מעבירים למתודה פונקציה אשר מכתביה מה לבצע על כל אחד מאיברי המערך
+      //50% הנחה
+      let pricesafterdiscount = prices.map(function (price) {
+        return price * 0.5;
+      });
+      console.log(prices);
+      console.log(pricesafterdiscount);
+      //
+      let cities = ["London ", "Tel-aviv ", "Paris ", " Madrid "];
+      console.log(cities);
+      //מסיר רווחים בסטרינג לפני המילה או מילים ואחריהן בכל איבר במערך
+      let citiesafterremovespace = cities.map(function (city) {
+        return city.trim();
+      });
+      console.log(citiesafterremovespace);
+
+      //תשובה בעזרת map להוסיף לכל איבר במערך 10
+      function addTenToEach(arr) {
+        return arr.map((num) => num + 10);
+      }
+
+      //פילטר
+      //תפקידה לבצע סינון כלשהו על איברי המערך מחזירה מערך חדש
+      let citiesincludesA = cities.filter(function (city) {
+        return city.includes("A") || city.includes("a");
+      });
+      console.log(citiesincludesA);
+    </script>
+  </body>
+</html>

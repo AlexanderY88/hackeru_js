@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Designer</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        .controls {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            margin-bottom: 10px;
+        }
+        
+        .control-group label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+        }
+        
+        .control-group input, .control-group select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        
+        button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .room_container {
+            position: relative;
+            background-color: #e6e6e6;
+            border: 2px solid #333;
+            margin: 20px auto;
+            background-image: 
+                linear-gradient(rgba(0,0,0,.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .room-element {
+            position: absolute;
+            border: 2px solid #333;
+            cursor: move;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+        }
+        
+        .room-element:hover {
+            opacity: 0.8;
+        }
+        
+        .delete-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+            display: none;
+        }
+        
+        .room-element:hover .delete-btn {
+            display: block;
+        }
+    </style>
+
+    <h1 style="text-align: center;">Room Designer</h1>
+    
+    <div class="controls">
+        <h3>Room Settings</h3>
+        <div class="control-group">
+            <label>Room Height (cm):</label>
+            <input type="number" id="roomHeight" placeholder="Enter height in cm" value="200">
+            <label>Room Width (cm):</label>
+            <input type="number" id="roomWidth" placeholder="Enter width in cm" value="300">
+            <button onclick="createRoom()">Create Room</button>
+        </div>
+        
+        <h3>Add Element</h3>
+        <div class="control-group">
+            <label>Element Height (cm):</label>
+            <input type="number" id="elementHeight" placeholder="Height in cm" value="50">
+            <label>Element Width (cm):</label>
+            <input type="number" id="elementWidth" placeholder="Width in cm" value="50">
+        </div>
+        <div class="control-group">
+            <label>Color:</label>
+            <select id="elementColor">
+                <option value="blue">Blue</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="purple">Purple</option>
+                <option value="orange">Orange</option>
+                <option value="brown">Brown</option>
+                <option value="pink">Pink</option>
+                <option value="yellow">Yellow</option>
+            </select>
+            <button onclick="addElement()">Add Element</button>
+            <button onclick="clearAllElements()">Clear All</button>
+        </div>
+    </div>
+
+    <div id="room_container" class="room_container"></div>
+
+    <script>
+        let draggedElement = null;
+        let elementCounter = 0;
+
+        function createRoom() {
+            let height = document.getElementById("roomHeight").value;
+            let width = document.getElementById("roomWidth").value;
+
+            if (!height || !width) {
+                alert("Please enter both height and width for the room");
+                return;
+            }
+
+            let room = document.getElementById("room_container");
+            room.style.height = (height * 2) + "px";
+            room.style.width = (width * 2) + "px";
+            room.innerHTML = ''; // Clear existing elements
+            elementCounter = 0;
+        }
+
+        function addElement() {
+            let height = document.getElementById("elementHeight").value;
+            let width = document.getElementById("elementWidth").value;
+            let color = document.getElementById("elementColor").value;
+
+            if (!height || !width) {
+                alert("Please enter both height and width for the element");
+                return;
+            }
+
+            let room = document.getElementById("room_container");
+            
+            if (!room.style.height) {
+                alert("Please create a room first");
+                return;
+            }
+
+            let newElement = document.createElement("div");
+            elementCounter++;
+            
+            newElement.className = "room-element";
+            newElement.id = "element" + elementCounter;
+            newElement.style.height = (height * 2) + "px";
+            newElement.style.width = (width * 2) + "px";
+            newElement.style.backgroundColor = color;
+            newElement.style.top = "10px";
+            newElement.style.left = "10px";
+            newElement.innerHTML = `${height}x${width}cm`;
+
+            // Add delete button
+            let deleteBtn = document.createElement("button");
+            deleteBtn.className = "delete-btn";
+            deleteBtn.innerHTML = "×";
+            deleteBtn.onclick = function(e) {
+                e.stopPropagation();
+                deleteElement(newElement);
+            };
+            newElement.appendChild(deleteBtn);
+
+            // Add drag functionality
+            newElement.addEventListener('mousedown', startDrag);
+            
+            room.appendChild(newElement);
+        }
+
+        function deleteElement(element) {
+            if (confirm("Are you sure you want to delete this element?")) {
+                element.remove();
+            }
+        }
+
+        function clearAllElements() {
+            if (confirm("Are you sure you want to delete all elements?")) {
+                let room = document.getElementById("room_container");
+                room.innerHTML = '';
+                elementCounter = 0;
+            }
+        }
+
+        function startDrag(e) {
+            draggedElement = e.target.closest('.room-element');
+            if (!draggedElement) return;
+
+            let rect = draggedElement.getBoundingClientRect();
+            let roomRect = document.getElementById("room_container").getBoundingClientRect();
+            
+            let offsetX = e.clientX - rect.left;
+            let offsetY = e.clientY - rect.top;
+
+            function onMouseMove(e) {
+                let newX = e.clientX - roomRect.left - offsetX;
+                let newY = e.clientY - roomRect.top - offsetY;
+                
+                // Boundary checking
+                let room = document.getElementById("room_container");
+                let maxX = room.clientWidth - draggedElement.offsetWidth;
+                let maxY = room.clientHeight - draggedElement.offsetHeight;
+                
+                newX = Math.max(0, Math.min(newX, maxX));
+                newY = Math.max(0, Math.min(newY, maxY));
+                
+                draggedElement.style.left = newX + "px";
+                draggedElement.style.top = newY + "px";
+            }
+
+            function onMouseUp() {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+                draggedElement = null;
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+            
+            e.preventDefault();
+        }
+
+        // Initialize with a default room
+        window.onload = function() {
+            createRoom();
+        };
+    </script>
+</body>
+</html>

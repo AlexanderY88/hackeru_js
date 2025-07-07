@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let arr = [];
+    arr.push(5);
+    arr.push(8);
+    console.log(arr);
+
+    const length = 4;
+    const nums = [];
+    for (var i = 0; i < length; i++); 
+    {
+        nums.push(i + 1);
+    }
+    console.log(nums);
+
+
+    // map - make a new array with the results of calling a provided function on every element in the calling array. map = method, not a function
+    // map does not change the original array, it creates a new one
+    let prices = [50, 25, 170, 90, 130];
+    let priceAfterDiscount = prices.map(function (price) {
+        return price * 0.5;
+    });
+    console.log(prices);
+    console.log(priceAfterDiscount);
+
+    // trim - removes whitespace from both ends of a string
+    // trim() does not change the original string, it creates a new one
+    // trim - does not remove whitespace in the middle of the string
+    let cities = ['New York ', ' Tel-Aviv', ' Bat-Yam ', 'Houston ', ' Nes-Tziona'];
+    let citiesTrimmed = cities.map(function (city) {
+        return city.trim();
+    });
+    console.log(cities);
+    console.log(citiesTrimmed);
+
+
+    // filter - creates a new array with all elements that pass the test implemented by the provided function
+    // filter does not change the original array, it creates a new one
+    let filteredCities = citiesTrimmed.filter(function (city) {
+        return city.includes('a', 2) || city.includes('A');
+    });
+    console.log(filteredCities);
+
+    // find - returns the value of the first element in the array that satisfies the provided testing function
+    // find does not change the original array, it returns the first element that satisfies the condition
+    let foundCity = citiesTrimmed.find(function (city) {
+        return city.includes('a') || city.includes('A');
+    });
+    console.log(foundCity);
+
+
+    // find - returns the first element in the array that satisfies the provided testing function
+    let countries = ["Israel", "Japan","China","Armenia","Germany","France","Italy","Spain","Portugal","Sweden"];
+    let filteredCountries = countries.find(function (country) {
+        return country.length==5;
+    });
+    console.log(countries);
+    console.log(filteredCountries);
+
+    let countryLessThanFore = countries.find(function (country) {
+        return country.length < 4;
+    });
+    console.log(countryLessThanFore);
+
+    // reduce - executes a reducer function (that you provide) on each element of the array, resulting in a single output value
+    // reduce does not change the original array, it returns a single value
+    let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let sum = numbers.reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue;
+    }, 0); // 0 is the initial value of the accumulator
+    // The reduce method goes through each element in the array and applies the function to accumulate a single result.
+
+    console.log(sum);
+
+
+    // sort - sorts the elements of an array in place and returns the sorted array
+    // sort does not create a new array, it changes the original array
+    let unsortedNumbers = [5, 2, 8, 1, 4];
+    console.log(unsortedNumbers);
+    // sort() without a compare function sorts the elements as strings
+    unsortedNumbers.sort(function (a, b) {
+        return a - b; // for ascending order
+    });
+    console.log(unsortedNumbers);   
+
+    let unsortedNames = ["John", "Alice", "Bob", "Charlie"];
+    console.log(unsortedNames);
+   unsortedNames.sort();
+   console.log(unsortedNames);
+
+
+    // reverse - reverses the elements of an array in place
+    // reverse does not create a new array, it changes the original array
+    let numbers2 = [1, 2, 3, 4, 5];
+    console.log("before reverse: "+numbers2);
+    let reversednumbers2 = numbers2.reverse();
+    console.log(reversednumbers2);
+
+    console.log(cities);
+    let reversedCities = cities.reverse();
+    console.log("after reverse: " + reversedCities.map(city => city.trim()));
+
+    // every - tests whether all elements in the array pass the test implemented by the provided function
+    // every returns true if all elements pass the test, otherwise false
+    let allPositive = numbers.every(function (num) {
+        return num > 0;
+    });
+    console.log(allPositive); // true
+
+    let someNegative = numbers.some(function (num) {
+        return num < 0;
+    });
+    console.log(someNegative); // false
+
+    // sort - sorts the elements of an array in place and returns the sorted array
+    // sort does not create a new array, it changes the original array
+    citiesTrimmed = citiesTrimmed.map(city => city.trim());
+    console.log(citiesTrimmed);
+    console.log("after sort: " + citiesTrimmed.sort());
+
+
+    let unsortedArray = [31, 10, 4, 20, 5, 73, 2, 8, 15];
+    console.log("before sort: " + unsortedArray);
+    unsortedArray.sort();
+    console.log("after sort: " + unsortedArray);   
+    
+    // sort with a compare function - relevant for numbers
+    console.log("before sort with compare function: " + unsortedArray);
+    unsortedArray.sort(function (a, b) {
+        return a - b; // for ascending order
+    });
+   console.log("after sort with compare function: " + unsortedArray);
+
+</script>
+    
+
+
+
+</body>
+</html>
