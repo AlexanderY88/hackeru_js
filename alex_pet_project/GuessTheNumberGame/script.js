@@ -50,7 +50,7 @@ function check_answer() {
             document.getElementById("guessInputField").disabled = true;
             updateTriesText();
             return;
-        } else if (guess < 0 || guess > 10 || isNaN(guess)) {
+        } else if (guess < 1 || guess > 10 || isNaN(guess)) {
             validation_message.innerText = "Invalid input. Please enter a number between 1 and 10.";
             message.style.color = "orange";
             message.style.fontSize = "20px";
