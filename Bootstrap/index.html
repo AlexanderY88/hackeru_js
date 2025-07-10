@@ -142,8 +142,228 @@
         </div> 
     </div> 
 
-    
+    <br>
+    <br>    
+    <h1 class="text-center">Grid that has more rows than 12</h1>
+    <div class="container text-center border">
+        <div class="row">
+            <div class="col-5 border bg-success">
+            col-5
+            </div>
+            <div class="col-6 border bg-secondary">
+            col-6
+            </div>
+            <div class="col-3 border bg-secondary">
+            col-3
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 border bg-dark text-white">
+            col-3
+            </div>
+            <div class="col-4 border bg-danger-subtle">
+            col-4
+            </div>
+            <div class="col-5 border bg-info">
+            col-5
+            </div>
+        </div> 
+        <br>
+        <h2 >Justify content center</h2>
+        <div class="row justify-content-center">
+            <div class="col-3 border bg-danger">
+            col-2
+            </div>
+            <div class="col-3 border bg-secondary">
+            col-3
+            </div>
+            <div class="col-3 border bg-body-secondary">
+            col-3
+            </div>
+        </div> 
+        <br>
+        <h2>Breakpoints</h2>
+        <div class="row">
+            <div class="col-md-6 col-3 border bg-danger">
+            col-2
+            </div>
+            <div class="col-3 border bg-secondary">
+            col-3
+            </div>
+            <div class="col-3 border bg-body-secondary">
+            col-3
+            </div>
+        </div> 
 
+        <h2>Sizing</h2>
+        <div class="container">
+            <div class="bg-success w-25">width 25% w-25</div>
+            <div class="bg-primary w-50">width 50% w-50</div>
+            <div class="bg-secondary w-75">width 75% w-75</div>
+            <div class="bg-warning w-100">width 100% w-100</div>
+        </div>
+        <br>
+        <div class="container" style="height: 200px;">
+            <div class="bg-success h-25">height 25% h-25</div>
+            <div class="bg-primary h-50">height 50% h-50</div>
+            <div class="bg-secondary h-75">height 75% h-75</div>
+            <div class="bg-warning h-100">height 100% h-100</div>
+        </div>
+
+
+    </div> 
+
+    <h2 class="text-center">Card</h2>
+    <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    </div>
+    <br>
+    <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    </div>
+    </div>
+    <br>
+    <br>
+    <h1>NavBar</h1>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<br>
+<h1>Spinner</h1>
+<div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-border text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-border text-success" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-border text-danger" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-border text-warning" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-border text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-border text-light" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-border text-dark" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+
+<h1> table</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<!-- On tables -->
+<table class="table-primary">...</table>
+<table class="table-secondary">...</table>
+<table class="table-success">...</table>
+<table class="table-danger">...</table>
+<table class="table-warning">...</table>
+<table class="table-info">...</table>
+<table class="table-light">...</table>
+<table class="table-dark">...</table>
+
+<!-- On rows -->
+<tr class="table-primary">...</tr>
+<tr class="table-secondary">...</tr>
+<tr class="table-success">...</tr>
+<tr class="table-danger">...</tr>
+<tr class="table-warning">...</tr>
+<tr class="table-info">...</tr>
+<tr class="table-light">...</tr>
+<tr class="table-dark">...</tr>
+
+<!-- On cells (`td` or `th`) -->
+<tr>
+  <td class="table-primary">...</td>
+  <td class="table-secondary">...</td>
+  <td class="table-success">...</td>
+  <td class="table-danger">...</td>
+  <td class="table-warning">...</td>
+  <td class="table-info">...</td>
+  <td class="table-light">...</td>
+  <td class="table-dark">...</td>
+</tr>
 
 
 </body>
