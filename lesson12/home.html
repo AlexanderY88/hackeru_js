@@ -6,9 +6,180 @@
     <title>Document</title>
 </head>
 <body>
-    
-    
 
+    <script>
+    // object
+    // array: ordered, indexes are important. In objects indexes are not important.
+    // object: unordered, indexes are not important. In objects indexes are not important.
+    // object: key-value pairs, where keys are strings (or Symbols) and values can be any type.
+    let productArr = ["Apple", 5, "Fruits", "Very very tasty"];
+    let productObject = {
+        name: "Apple",
+        price: 5,
+        category: "Fruits",
+        description: "Very very tasty"
+    };
+
+    console.log(productObject);
+    console.log(productArr);
+    console.log(productObject.name);
+    console.log(productObject.price);
+    console.log(productObject.category);
+    console.log(productObject.description);
+
+    let employee = {
+        id: 1,
+        name: "Margol",
+        position: "Singer",
+        department: "Music",
+        company: "Hackeru",
+        email: "margol@gmail.com",
+        salary: 20000,
+    };
+    console.log(employee);
+    console.log(employee.email);
+
+    // add new property to object
+    employee.age = 30;
+
+    console.log(employee.age);
+    // delete property from object
+    delete employee.salary;     
+    console.log(employee.salary); // undefined
+    console.log(employee);
+
+    // update property in object
+    employee.name = "Sigal";
+    console.log(employee);
+
+    let employee2 = {
+        id: 2,
+        name: "Margol2",
+        position: "Singer2",
+        department: "Music2",
+        company: "Hackeru2",
+        email: "margol2@gmail.com",
+        salary: 20000,
+    };
+
+    console.log(employee2);
+
+    let obj = {
+        name: "Alex",
+        favAnimal: "Dog",
+        name: "Alexander",
+    };
+
+    console.log(obj.name); // "Alexander" 
+    // The last property with the same key overwrites the previous one. (last one wins)
+
+    let company = {
+        id: 123456789,
+        name: "HackerU",
+        address: "Tel Aviv",
+        departments: [
+            "HR", "IT", "Marketing", "Sales", "Finance", "Support", "Development", "Design", "Operations", "Legal"
+        ],
+    };
+
+    function printDepartments(departments) {
+    for (let i = 0; i < departments.length; i++) {
+        console.log(departments[i]);
+    }
+    }
+    printDepartments(company.departments); 
+    console.log("next exercise... ... ... ... ...")
+    let data = {
+        company: "Google",
+        users: [
+            {name: "Alex", age: 30}, 
+            {name: "Bob", age: 25}, 
+            {name: "Charlie", age: 35}
+        ],
+    };
+
+    function printUsersNames(users) {
+        for (let i = 0; i < users.length; i++) {
+            console.log(users[i].name);
+        }
+    };
+    printUsersNames(data.users);
+
+    console.log("next exercise... College ... ... ... ...");
+    let college = {
+        name: "Hogwarts",
+        address: "Tel-Aviv",
+        students: [
+            {name: "Harry Potter", age: 11, grade: 80},
+            {name: "Hermione Granger", age: 11, grade: 95},
+            {name: "Ron Weasley", age: 11, grade: 85},
+            {name: "Draco Malfoy", age: 11, grade: 60},
+            {name: "Luna Lovegood", age: 11, grade: 90},
+            {name: "Harry Porter", age: 11, grade: 70},
+            {name: "Neville Longbottom", age: 11, grade: 80},
+            {name: "Ginny Weasley", age: 11, grade: 75},
+            {name: "Fred Weasley", age: 11, grade: 65}, 
+        ],
+        lectors: [
+            {name: "Albus Dumbledore", subject: "Magic"},
+            {name: "Severus Snape", subject: "Potions"},
+            {name: "Minerva McGonagall", subject: "Transfiguration"},
+            {name: "Rubeus Hagrid", subject: "Care of Magical Creatures"},
+        ],
+    };
+
+    function averageGrade(students) {
+        let total = college.students[0].grade;
+        for (let i = 1; i < students.length; i++) {
+            total += students[i].grade;
+        };
+        return (total / students.length).toFixed(2);
+    }
+    console.log("Average grade of students:", averageGrade(college.students));
+
+    console.log("element that is method of object");
+    let user = {
+        name: "Alex Alexander",
+        email: "alex@gmail.com",
+        password: "Abc123",
+        log: function() {
+            console.log(`name: ${user.name}, email: ${user.email}`);
+        },
+    };
+    user.log();
+
+    console.log("element that is method of object using this");
+    let user2 = {
+        name: "Alex Alexander A",
+        email: "alexAAA@gmail.com",
+        password: "Abc12345",
+        log: function() {
+            console.log(`name: ${this.name}, email: ${this.email}`);
+        },
+    };
+    user2.log();
+
+    console.log("Exercise with * ");
+    let product = {
+        id: 15,
+        price: 25.5,
+        title: "DonKey",
+        set: function (propertyName, value) {
+            this[propertyName] = value;
+            return this;
+        },
+        get: function (propertyName) {
+            return this[propertyName];
+        },
+    };
+
+    let prod1 = product.set("title", "Memory Card").get("title");
+    let prod2 = product.set("price", 15.5).get("price");
+    console.log(prod1); // Memory Card
+    console.log(prod2); // 15.5
+
+
+    </script>
 
 </body>
 </html>

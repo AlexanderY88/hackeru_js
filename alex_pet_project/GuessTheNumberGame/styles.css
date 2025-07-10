@@ -1,0 +1,188 @@
+/* Global CSS */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #e0f7fa, #29d7ee) no-repeat;
+    min-height: 100vh;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-size: 1.2em;
+    color: #555;
+    text-align: center;
+    font-weight: bold;
+}
+
+h1 {
+    margin-top: 15vh;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px #666;
+}
+
+#tryes_text {
+    margin-bottom: 5%;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 15vh;
+    gap: 8px; 
+}
+
+#input_container {
+    height: 3vh;
+    width: 80%;
+    margin: 0% 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#validation_message {
+    font-size: 1.2em;
+    color: #d32f2f;
+    text-align: center;
+    margin: 5px 0; 
+}
+
+#guessInput {
+    font-size: 1.2em;
+}
+
+#guessInputField {
+    height: 3vh;
+    width: 15%;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+#buttons {
+    height: 5vh;
+    width: 45vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+    font-size: 1.2em;
+}
+
+button {
+    height: 5vh;
+    width: 25vh;
+    border-radius: 5px;
+    background-color: #1368bc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin: 0 5%;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#validation_message {
+    font-size: 1.2em;
+    color: #d32f2f;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+button:hover {
+    background-color: #0f4f8a;
+}
+
+#resultMessage {
+    font-size: 1.5em;
+    color: #146517;
+    text-align: center;
+    margin-top: 30px;
+}
+
+@media (max-width: 799px) {
+    body {
+        text-align: center;
+        margin: 5%;
+    }
+
+    h1 {
+        margin-top: 5vh;
+        font-size: 1.8em;
+    }
+
+    #tryes_text {
+        margin: 5% 2%;
+    }
+
+    #container {
+        height: auto;
+        margin-top: 20px;
+        gap: 10px;
+    }
+
+    #input_container {
+        height: 5vh;
+        width: 90%;
+        margin: 2% 0;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #guessInput {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    #guessInputField {
+        height: 50px;
+        width: 80%;
+        margin: 0;
+        padding: 10px;
+        font-size: 18px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #validation_message {
+        font-size: 1.1em;
+        margin: 15px 0;
+    }
+
+    #buttons {
+        height: auto;
+        width: 90%;
+        flex-direction: column;
+        gap: 15px;
+        margin: 5px 0;
+    }
+
+    button {
+        height: 30px;
+        width: 50%;
+        font-size: 16px;
+        margin: 0;
+        padding: 5px;
+    }
+
+    #resultMessage {
+    font-size: 1.5em;
+    color: #146517;
+    text-align: center;
+    margin-top: 10px;
+    }
+}
