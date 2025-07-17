@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Classes</title>
+</head>
+<body>
+
+    <div id="Dish" class="container text-center" style="margin-top: 100px;">
+       
+    </div>
+
+
+    <hr>
+    <h1 style="text-align: center; margin: 50px;">Another way</h1>
+
+     <div class="container2">
+      <div class="row" id="dishes2"></div>
+    </div>
+
+    <hr>
+    <h1 style="text-align: center; margin: 50px;">Another way</h1>
+
+     <div class="container3">
+      <div class="row" id="dishes3"></div>
+    </div>
+
+    <script>
+        // literal object
+        let user = {name: "Margol", age: 59, email: "margol@gmail.com", isLoggedIn: true};
+        let user2 = {name: "Avi", age: 35, email: "avi@gmail.com", isLoggedIn: false};
+
+        // class - part of OOP
+        let date = new Date();
+
+        // ES5 Classes
+
+        function User() {
+            this.email = "mail@gmail.com";
+            this.password = "123456";
+            this.isLoggedIn = true;
+            this.age = 21;
+            this.log = function() {
+                console.log(`Email: ${this.email}, Age: ${this.age}`);
+            };
+        }
+
+        let u1 = new User();
+        let u2 = new User();
+        console.log(u1);
+        u1.log();
+        u2.log();
+        
+        // Constructor function
+        function User2(_email, _password, _age, _isLoggedIn) {
+            this.email = _email;
+            this.password = _password;
+            this.isLoggedIn = _isLoggedIn;
+            this.age = _age;
+            this.log = function() {
+                console.log(`Email: ${this.email}, Age: ${this.age}`);
+            };
+        }
+
+        let u3 = new User2("john@gmail.com", "654321", 30, true);
+        console.log(u3);
+        u3.log();
+        let u4 = new User2("moshe@gmail.com", "abcdef", 25, false);
+        console.log(u4);
+        u4.log();
+
+        let Student = function(name, course, grade) {
+            this.name = name;
+            this.course = course;
+            this.grade = grade;
+        };
+
+        let students = [
+            new Student("Alex", "JavaScript", 85),
+            new Student("Sara", "Python", 90),
+            new Student("John", "Java", 78),
+            new Student("Emily", "C++", 88)
+        ];
+
+        for (let j = 0; j < students.length; j++) {
+            console.log(students[j].name);
+        }
+
+        // exercise 1 
+        function Dish (name, size, category, price, available) {
+            this.name = name;
+            this.size = size;
+            this.category = category;
+            this.price = price;
+            this.available = available;
+        };
+
+        let dishes = [
+            new Dish("Salad", 400, "First", 37, true),
+            new Dish("Hamburger M", 200, "Main", 52, true),
+            new Dish("Hamburger L", 300, "Main", 62, false),
+            new Dish("Pizza L", 300 , "Main", 45, false),
+            new Dish("Pizza XL", 320, "Main", 55, true),
+            new Dish("Fries", 270, "First", 26, true),
+            new Dish("Soup", 190, "First", 30, false),
+            new Dish("Steak M", 300, "Main", 84, true)
+        ];
+
+        function showDishes(dishesArr) {
+            for (let i = 0; i < dishesArr.length; i++) {
+                if (dishesArr[i].available) {
+                    document.getElementById("Dish").innerHTML += `<div class="row display-6 text-primary border border-primary-subtle container text-center">
+                        <div class="col"> ${dishesArr[i].name}</div>
+                        <div class="col">${dishesArr[i].size} gr</div>
+                        <div class="col">${dishesArr[i].category}</div> 
+                        <div class="col">${dishesArr[i].price}₪</div>
+                    </div>`;
+                }
+            }
+        }
+
+        showDishes(dishes);
+
+        function showDishes2(arr) {
+        for (let i = 0; i < arr.length; i++) {
+                if (arr[i].available) {
+            document.getElementById("dishes2").innerHTML += `
+              <div class="col-4">
+                <div class="card" style="margin: 50px;">
+                    <div class="card-header">
+                        ${arr[i].name}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${arr[i].category}</h5>
+                        <p class="card-text text-success">Price: ${arr[i].price}₪</p>
+                        <p class="card-text">Category: ${arr[i].category}</p>
+                        <a href="#" class="btn btn-primary">Buy</a>
+                    </div>
+                </div>
+             </div>
+        `};
+    };
+        };
+
+        showDishes2(dishes);
+
+         function showDishes3(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          document.getElementById(
+            "dishes3"
+          ).innerHTML += `  <div class="card col-md-3">
+      <div class="card-header">${arr[i].category}</div>
+      <div class="card-body">
+        <h5 class="card-title">${arr[i].name}</h5>
+        <p class="card-text text-success">${arr[i].price} ₪</p>
+        <p class="card-text text-secondary">${arr[i].size}gr</p>
+        <button class="btn btn-primary" ${
+          arr[i].available ? "" : "disabled"
+        }>Buy</button>
+      </div>
+    </div> `;
+        }
+      }
+      showDishes3(dishes);
+
+
+
+
+
+    </script>
+
+
+    
+</body>
+</html>

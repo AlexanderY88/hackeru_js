@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var myObject = {
+            myString: "str1",
+            myNumber: 100,
+            myFunc: function () {
+                let self = this;
+                var myString = "str2";
+                console.log("1 " + this.myString);
+                if (this.myNumber == "100") {
+                    console.log("2 " + myString);
+                }
+                if (this.myNumber === "100") {
+                    console.log("3 " + this.myString);
+                }
+                console.log("4 " + myString);
+                if (Number.isInteger(this.myNumber)) {
+                    console.log("5 " + self.myString);
+                }
+                // Number - if is green color = it is Class (in VS) . Also starts with capital letter. 
+                // isInteger: the method is used to check if a value is an integer.
+                // this. - takes the value of the object itself.
+                // self. - takes the value of the variable itself, in this case, myObject. - value "str1"
+            },
+        }
+        
+        myObject.myFunc();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul id="coursesList"></ul>
+    <script>
+        // literal object: let object = {name: "Margol", age:59}
+        
+        let courses = [
+            {name: "Python", courseNum: 205, numOfStudents: 50},
+            {name: "Angular", courseNum: 207, numOfStudents: 32},
+            {name: "MongoDB", courseNum: 208, numOfStudents: 15}
+        ];
+
+        function showCourses(coursesArr){
+            for (let i=0; i<coursesArr.length; i++) {
+                document.getElementById("coursesList").innerHTML += `<li>${coursesArr[i].name} </li>`;
+            }
+        }
+
+        showCourses(courses);
+    </script>
+
+</body>
+</html>

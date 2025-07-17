@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+     
+<script>
+
+    // classes
+    function Animal(name, age, food) {
+        this.name = name;
+        this.age = age;
+        this.food = food;
+        this.sound = function() {
+            console.log("General sound");
+        };
+        this.sleep = function() {
+            console.log(`Good night ${this.name}`);
+        };
+    }
+
+    function Dog(name, age, food, outside) {
+        Animal.call(this, name, age, food); // Call the Animal constructor
+        this.outside = outside; // Add a new property specific to Dog
+        this.sound = function() {
+            console.log("Bark");
+        }; // Override the sound method for Dog
+    }
+
+    function Cat(name, age, food) {
+        Animal.call(this, name, age, food); // Call the Animal constructor
+        // No additional properties for Cat
+        this.sound = function() {
+            console.log("Meow");
+        }; // Override the sound method for Cat
+    }   
+
+    let shoko = new Dog("Shoko", 3, "Meat", 3);
+    let kitty = new Cat("Kitty", 2, "Fish");
+
+    console.log(shoko);
+    console.log(kitty);
+    shoko.sound(); // Outputs: Bark
+    kitty.sound(); // Outputs: Meow
+
+    let mitzi = new Cat("Mitzi", 1, "Tuna");
+    console.log(mitzi); // Outputs: Cat { name: 'Mitzi', age: 1, food: 'Tuna' }
+    mitzi.sleep(); // Outputs: Good night Mitzi
+    shoko.sleep(); // Outputs: Good night Shoko
+
+    // another example
+
+    function Person(id, name, age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    function Employee(id, name, age, department) {
+        Person.call(this, id, name, age); // Call the Person constructor
+        this.department = department; // Add a new property specific to Employee
+    }
+
+    let emp = new Employee("213213213", "John Doe", 30, "HR");
+    console.log(emp); // Outputs: Employee { id: 1, name: 'John Doe', age: 30, department: 'HR' }
+    
+
+</script>
+
+
+
+
+</body>
+</html>
