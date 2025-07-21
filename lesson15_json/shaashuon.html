@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    function Animal (name, energy) {
+        this.name = name || "none";
+        this,energy = energy || 100;
+        this.sleep = function(hours) {
+            console.log(`${this.name} is sleeping.`);
+            this.energy += hours;
+        }
+    };
+
+    function Leo(name, energy) {
+        this.name = name;
+        Animal.call(this);
+        this.play = function(hours) {
+            console.log(`${this.name} is playing`);
+            this.energy -= hours;
+        }
+    }
+
+    const leo1 = new Leo("Duby", 7);
+    const leo2 = new Animal("Milki", 10);
+    leo1.sleep(5);
+    leo2.play(2);
+    leo1.play(3);
+    console.log(leo1.energy);
+    console.log(leo2.energy);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <title>Tables</title>
+</head>
+<body class="text-danger-emphasis">
+        <h1 class="text-center mt-4">Products table</h1>
+        <div class="mx-auto p-2 text" style="width: 800px;">
+          <table id="productsTable" class="table table-bordered border-primary m-5" ></table>
+        </div>
+
+        <script>
+            function Product (id, name, price, category, description) {
+                    this.id = id;
+                    this.getId = function() {
+                        return this.id;
+                    };
+                    this.setId = function(id) {
+                        this.id = id;
+                    };
+
+                    this.name = name;
+                    this.getName = function() {
+                        return this.name;
+                    };
+                    this.setName = function(name) {
+                        this.name = name;
+                    };
+
+                    this.price = price;
+                    this.getPrice = function() {
+                        return this.price;
+                    };
+                    this.setPrice = function(price) {
+                        this.price = price;
+                    };
+
+                    this.category = category;
+                    this.getCategory = function() {
+                        return this.category;
+                    };
+                    this.setCategory = function(category) {
+                        this.category = category;
+                    };
+
+                    this.description = description;
+                    this.getDescription = function() {
+                        return this.description;
+                    };
+                    this.setDescription = function(description) {
+                        this.description = description;
+                    };
+            };
+            
+            let products = [
+                new Product(2536, "Sony Professional 32GB XQD", 500, "Storage", "The new XQD cards achieve Max read"), 
+                new Product(2537, "Lenovo Legion 15.6 Gaming", 4228, "Laptops", "Lenovo Legion 5 pairs unparalleled flexibility with incredible power, offering a plethora of performance options for any gamer in a clean and minimalist design"), 
+                new Product(2538, "ASUS ROG GL552VWDH71 15.6", 5300, "Laptops", "Offering a formidable core experience for serious gaming and multitasking on Windows 10 Pro"), 
+                new Product(2539, "Razer BlackWidow V3 Chroma RGB", 439, "Keyboards", "Experience one of the most iconic mechanical gaming keyboards with the Razer BlackWidow"), 
+                new Product(2540, "Microsoft Surface Pro 7.0", 5400, "Laptops", "New Surface Pro 7 adapts to the way you work with laptop-to-tablet versatility"), 
+            ];
+
+
+            function displayAllProducts() {
+                let table = document.getElementById("productsTable");
+                table.innerHTML = `
+                <thead class="border-primary"> 
+                    <tr class="text-center">
+                        <th scope='col'>ID</th>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Price</th>
+                        <th scope='col'>Category</th>
+                        <th scope='col'>Description</th>
+                    </tr>
+                </thead> `;
+
+                
+                function addProductToTable(product) {
+                       table.innerHTML += `
+                        <tbody>
+                            <tr class="border-primary ">
+                                <td class="text-center text-danger-emphasis">${product.getId()}</td>
+                                <td>${product.getName()}</td>
+                                <td>${product.getPrice()}</td> 
+                                <td>${product.getCategory()}</td>
+                                <td>${product.getDescription()}</td>
+                            </tr>
+                        </tbody>  ` ;
+                    
+                };
+
+                for (let i = 0; i < products.length; i++) {
+                    addProductToTable(products[i]);
+                };
+            }
+
+            displayAllProducts();
+
+        </script>
+
+
+</body>
+</html>

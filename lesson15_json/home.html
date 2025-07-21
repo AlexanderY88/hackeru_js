@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json</title>
+</head>
+<body>
+    
+    <script>
+        // JSON - JavaScript Object Notation
+        // client side = what customer see and can do, like press something, click, etc.
+        // server side = what customer cannot see, like database, etc.
+        // DB = database, where all the data is stored.
+        // JSON is a text format that is used to store and exchange data.
+        // It is easy to read and write for humans, and easy to parse and generate for machines.
+        // JSON is often used to send data from a server to a web application, or to store data in a file.
+        // It is a lightweight format that is easy to read and write, and it is supported by many programming languages.
+        // JSON is often used to send data from a server to a web application, or to store data in a file.
+        // json using queries to get data from the server.
+        // JSON is often used with AJAX (Asynchronous JavaScript and XML) to request data from a server without refreshing the page.
+        // This allows for a more dynamic and responsive user experience.
+        // DB can be in different formats, like SQL, MongoDB, etc.
+        // When json sent to server, the server can parse the json and store it in a database.
+        // When json sent to client, the client can parse the json and display it in a web page.
+        // json more lightweight than XML, so it is more efficient to use. 
+
+
+        // literal object
+        let user = {
+            id: "123456789",
+            email: "dd@gmail.com",
+            name: "Donald Duck",
+            age: 120,
+            isLoggedIn: true
+        };
+
+        // json object
+        let userJson = `{
+            "id": "0123456789",
+            "email": "mm@gmail.com",
+            "name": "Mickey Mouse",
+            "age": 130,
+            "isLoggedIn": false
+        }`;
+
+        console.log(user);
+        console.log(userJson);
+
+        //json to js:
+        // JSON.parse() - converts a JSON string into a JavaScript object
+        
+        console.log(JSON.parse(userJson));
+
+        // js to json:
+        // JSON.stringify() - converts a JavaScript object into a JSON string
+        console.log(JSON.stringify(user));
+        
+        // second page of project - modal and staticButtons - using bootstrap, help in lesson 14, can see the video. Have to use functions with parameters 
+        // contact us page - just a form
+        // first page - carusel 
+        // products page - table with products, using json, and functions with parameters
+        // netlify - free hosting, can host static pages, like html, css, js, images, etc.
+        // netlify - can host static pages, like html, css, js, images, etc. 
+
+
+
+    </script>
+
+
+</body>
+</html>
