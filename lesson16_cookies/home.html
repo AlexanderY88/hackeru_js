@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+</head>
+<body>
+    
+<script>
+    //storage - localStorage, sessionStorage, cookies
+    //localStorage - stores data with no expiration date, data is not deleted when the browser is closed, data can be accessed from any tab or window in the same browser
+    //sessionStorage - stores data for one session, data is deleted when the browser is closed
+    //cookies - stores data for a specific domain, data can have an expiration date, data is sent to the server with every request
+
+    // two types of storage: 
+    //localStorage - stores data with no expiration date, data is not deleted when the browser is closed, data can be accessed from any tab or window in the same browser
+    //sessionStorage - stores data for one session, data is deleted when the browser is closed
+    //cookies - stores data for a specific domain, data can have an expiration date, data is sent to the server with every request
+
+
+    // storage
+      // two types of storage
+      // local storage - אחסון לטווח ארוך, המידע ישאר שם כל עוד לא נמחק אותו
+      // session storage - אחסון זמני, לטווח קצר, המידע יימחק ברגע שהטאב נסגר או הדפדפן כולו
+      // cookies - אחסון עבור דומיין ספציפי, המידע יכול להיות עם תאריך תפוגה, המידע נשלח לשרת עם כל בקשה
+
+
+
+    window.console.log("Hey");
+    // localStorage
+    window.localStorage.setItem("name", "Donald Duck");
+    window.localStorage.setItem("age", "120");
+    window.localStorage.getItem("name"); // returns "Donald Duck"
+    window.localStorage.getItem("age"); // returns "120"
+
+    
+    // localStorage.removeItem("name");
+    // localStorage.removeItem("age");
+
+    // localStorage.clear();
+
+    // sessionStorage
+    window.sessionStorage.setItem("name", "Mickey Mouse");
+    window.sessionStorage.setItem("age", "95");
+    window.sessionStorage.getItem("name"); // returns "Mickey Mouse"
+    window.sessionStorage.getItem("age"); // returns "95"
+    // sessionStorage.removeItem("name");
+    // sessionStorage.removeItem("age");
+    console.log(window.sessionStorage.getItem("name"));
+    console.log(window.sessionStorage.getItem("age"));
+
+
+    sessionStorage.setItem("user", "Alex");
+    localStorage.setItem("isLoggedIn", "true");
+    console.log(sessionStorage.getItem("user")); // returns "Alex"
+    console.log(localStorage.getItem("isLoggedIn")); // returns "true"
+
+    let grades = [100, 90, 80, 70, 60];
+    sessionStorage.setItem("grades", JSON.stringify(grades)); // convert array to string
+    localStorage.setItem("grades", JSON.stringify(grades)); // convert array to string
+
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    console.log(user); // returns "Alex"
+    let gradesFromSession = JSON.parse(sessionStorage.getItem("grades"));
+    console.log(gradesFromSession); // returns [100, 90, 80, 70, 60]
+    let gradesFromLocal = JSON.parse(localStorage.getItem("grades"));
+    console.log(gradesFromLocal); // returns [100, 90, 80, 70, 60]
+    // cookies
+    // document.cookie = "name=Donald Duck; expires=Fri, 31 Dec
+    // 2023 23:59:59 GMT; path=/"; // sets a cookie with name, value, expiration date and path
+    // document.cookie = "age=120; expires=Fri, 31 Dec 202
+
+    localStorage.removeItem("isLoggedIn");
+    sessionStorage.removeItem("user");
+    // 3 23:59:59 GMT; path=/"; // sets a cookie with name, value, expiration date and path
+    // console.log(document.cookie); // returns "name=Donald Duck; age=120"
+
+
+    // crud - create, read, update, delete
+
+</script>
+
+    
+</body>
+</html>

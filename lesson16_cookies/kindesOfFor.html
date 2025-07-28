@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // print array in console
+        let prices = [85, 96, 97, 100];
+
+        //es5 
+        console.log("es5 for loop");
+        
+        for (let i=0; i< prices.length; i++) {
+            console.log(prices[i]);
+        }
+
+        //es6 - for of loop - return value of index
+        console.log("es6 for of loop - value of index");
+        for (let price of prices) {
+            console.log(price);
+        }
+
+        // another way to use for of loop - returns index and after that value of the index
+        console.log("es6 for in loop - index and value of index");
+        for (let i in prices) {
+            console.log(prices[i]);
+        }
+
+        //es6 forEach
+        console.log("es6 forEach loop");
+        prices.forEach(function(price) {
+            console.log(price);
+        });
+
+        //es6 forEach with arrow function
+        console.log("es6 forEach with arrow function");
+        prices.forEach(price => {
+            console.log(price);
+        });
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

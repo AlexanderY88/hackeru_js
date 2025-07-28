@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="container" style="margin-top: 50px; display: flex; flex-direction: column; align-items: center;padding: 20px; ">
+    <input type="text" id="name" placeholder="Enter your username" style="margin: 20px;">
+    <input type="password" id="password" placeholder="Enter your password">
+    <button id="save" onclick="logIn()" style="height: 25px; width: 100px; color: white; background-color: blue; border-radius: 5px; margin: 20px;">Save</button>
+    <p>username = alex , password = 1234</p>
+</div>
+
+<script>
+    let user = {
+        username: "alex",
+        password: "1234"
+    };
+
+    function logIn() {
+        let inputUsername = document.getElementById("name").value;
+        let inputPassword = document.getElementById("password").value;
+
+        if (inputUsername === user.username && inputPassword === user.password) {
+            alert(`Hi ${user.username}. You have logged in successfully!`);
+            localStorage.setItem("username", inputUsername);
+            localStorage.setItem("password", inputPassword);
+            localStorage.setItem("isLoggedIn", "true");
+        } else {
+            alert("Login failed! Please check your username and password.");
+            localStorage.setItem("isLoggedIn", "false");
+        }
+    };
+
+
+</script>
+    
+
+
+
+
+</body>
+</html>
