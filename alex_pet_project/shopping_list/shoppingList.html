@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>רשימת קניות</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .shopping-item {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- כותרת -->
+        <div class="text-center mb-4">
+            <h1 class="text-primary">
+                <i class="fas fa-shopping-cart"></i>
+                רשימת קניות
+            </h1>
+        </div>
+
+        <!-- טופס הוספת פריט -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <input type="text" id="itemInput" class="form-control" 
+                               placeholder="הכנס פריט לרשימה..." maxlength="50">
+                    </div>
+                    <div class="col-4">
+                        <button onclick="addItem()" class="btn btn-success w-100">
+                            <i class="fas fa-plus"></i> הוסף
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- כפתור איפוס -->
+        <div class="text-center mb-3">
+            <button onclick="clearList()" class="btn btn-danger">
+                <i class="fas fa-trash"></i> נקה רשימה
+            </button>
+        </div>
+
+        <!-- הרשימה -->
+        <div id="shoppingList">
+            <!-- כאן יופיעו הפריטים -->
+        </div>
+
+        <!-- הודעה כשהרשימה ריקה -->
+        <div id="emptyMessage" class="text-center text-muted" style="display: none;">
+            <i class="fas fa-shopping-basket fa-3x mb-3"></i>
+            <h5>הרשימה ריקה</h5>
+            <p>הוסף פריטים לרשימת הקניות שלך</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // מערך לשמירת הפריטים
+        let shoppingItems = [];
+
+        // פונקציה להוספת פריט
+        function addItem() {
+            // לקיחת הערך מתיבת הקלט
+            const input = document.getElementById('itemInput');
+            const itemText = input.value.trim();
+
+            // בדיקה שהמשתמש הכניס משהו
+            if (itemText === '') {
+                alert('אנא הכנס שם פריט');
+                return;
+            }
+
+            // הוספת הפריט למערך
+            shoppingItems.push(itemText);
+
+            // ניקוי תיבת הקלט
+            input.value = '';
+
+            // עדכון התצוגה
+            displayItems();
+        }
+
+        // פונקציה להצגת הפריטים
+        function displayItems() {
+            const listContainer = document.getElementById('shoppingList');
+            const emptyMessage = document.getElementById('emptyMessage');
+
+            // אם אין פריטים - הצג הודעה
+            if (shoppingItems.length === 0) {
+                listContainer.innerHTML = '';
+                emptyMessage.style.display = 'block';
+                return;
+            }
+
+            // הסתר הודעת "ריק"
+            emptyMessage.style.display = 'none';
+
+            // בניית HTML לרשימה
+            let html = '';
+            for (let i = 0; i < shoppingItems.length; i++) {
+                html += `
+                    <div class="shopping-item">
+                        <span>
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            ${shoppingItems[i]}
+                        </span>
+                        <button onclick="removeItem(${i})" class="btn btn-sm btn-outline-danger">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            }
+
+            // הכנסת ה-HTML לדף
+            listContainer.innerHTML = html;
+        }
+
+        // פונקציה למחיקת פריט
+        function removeItem(index) {
+            // הסרת הפריט מהמערך
+            shoppingItems.splice(index, 1);
+            
+            // עדכון התצוגה
+            displayItems();
+        }
+
+        // פונקציה לניקוי כל הרשימה
+        function clearList() {
+            // בקשת אישור מהמשתמש
+            if (confirm('האם אתה בטוח שברצונך לנקות את הרשימה?')) {
+                // ניקוי המערך
+                shoppingItems = [];
+                
+                // עדכון התצוגה
+                displayItems();
+            }
+        }
+
+        // הוספת אפשרות להוסיף בלחיצה על Enter
+        document.getElementById('itemInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addItem();
+            }
+        });
+
+        // הצגה ראשונית (רשימה ריקה)
+        displayItems();
+    </script>
+</body>
+</html>
