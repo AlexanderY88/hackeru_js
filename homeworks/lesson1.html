@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+    //     שאלה 1
+    // צרו דף html ובו כותרת 1h עם שמכם המלא
+    // כתבו סקריפט המוסיף לדף פסקה ובה שם הרחוב והעיר בה אתם גרים. שם העיר בלבד צריך להיות בכתב
+    // מודגש.
+    // אין צורך להשתמש ב-CSS.
+
+    // + question 3 
+    // צרו דף html עם התצוגה הבאה:
+    // in the picture 3 buttons with colors and header "choose your color" 
+    // בעת לחיצה על כל אחד מהכפתורים, צבע הכותרת משתנה לצבע הרשום בכפתור
+
+
+    document.write("<h1 id='theText'>Hello from JS!</h1>");
+    document.write("<button onclick='textRed()'>Red</button>");
+    document.write("<button onclick='textGreen()'>Green</button>");
+    document.write("<button onclick='textBlue()'>Blue</button>");
+
+    function textRed() {
+        document.getElementById("theText").style.color = "red";
+    }
+    function textGreen() {
+        document.getElementById("theText").style.color = "green";
+    }
+    function textBlue() {
+        document.getElementById("theText").style.color = "blue";
+    }
+
+    // anothar way 
+
+    document.write("<h1 id='theAnotherText'>Another way</h1>");
+    document.write("<button onclick='textYellow()'>Yellow</button>");
+    document.write("<button onclick='textBrown()'>Brown</button>");
+    document.write("<button onclick='textPink()'>Pink</button>");
+
+    let text = document.getElementById("theAnotherText");
+
+    let textYellow = ()  => text.style.color = "gray";
+    let textBrown = () => text.style.color = "brown";
+    let textPink = () => text.style.color = "pink";
+    
+
+
+    // שאלה 2
+    // צרו דף html ובו פסקה עם שם החיה האהובה עליכם וכפתור בשם change, שבעת לחיצה עליו, צבע הרקע
+    // של הדף ישתנה לצבע כחול וצבע הטקסט ישתנה ללבן.
+
+    // I decided to change the question because I don't want to create another page. It will be inside a div 
+
+    document.write("<div id='animalDiv' style='display:flex; justify-content: center; align-items: center; height: 250px; width: 300px; text-align: center; background-color: silver; margin: 50px; flex-direction: column;'>Another way</div>");
+    let animalText = document.getElementById("animalDiv");
+    animalText.innerHTML = "<p>The animal is Dog</p>";
+    animalText.innerHTML += "<div><button id='changeColorOrange' onclick='changeColorOrange()'>Color orange</button> <button id='changeColorSilver' onclick='changeColorSilver()' style='margin: 5px;'>Color silver</button></div>";
+
+    let changeColorOrange = () => animalText.style.backgroundColor = "orange";
+    let changeColorSilver = () => animalText.style.backgroundColor = "silver";
+
+    // question 4 : icon of facebook and 3 buttons: facebook, instagram and twitter. Pushing the button changes the icon to the corresponding social network.
+
+    document.write("");
+
+
+
+</script>
+
+
+</body>
+</html>

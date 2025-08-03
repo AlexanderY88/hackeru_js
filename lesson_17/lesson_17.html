@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+ // es6
+// object de-structuring is: object destructuring is a syntax that allows you to unpack values from objects into distinct variables.
+
+let data = {
+    company: "Hackeru",
+    users: [
+        {name: "Avi", age: 59},
+        {name: "Shlomi", age: 45},
+        {name: "Margol", age: 32}
+    ]
+}
+
+console.log(data.users[1].name);
+console.log(data.company);
+
+let {users, company} = data; // destructuring - unpacking the users array from the data object
+console.log(users[1].name); // Shlomi
+console.log(users); // Shlomi
+console.log(company); // Hackeru
+
+// array destructuring
+let arr = [10, true, "Mami"];
+let [age, isStudent] = arr; // unpacking the array into variables
+console.log(age); // 10
+console.log(isStudent); // true
+
+
+// function whatIsMyName(name1 = "Alex", name2 = "Alexander") {
+//     return `Hey, My name is ${name1} and my full name is ${name2}`;
+// }
+
+// console.log(whatIsMyName());
+// console.log(whatIsMyName("John"));
+// console.log(undefined, "Doe"); // undefined will be replaced by the default value in the function parameter
+
+// functions: 
+
+// function declaration - hoisting 
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+// function expression
+let add2 = function(num1, num2) {
+    return num1 + num2;
+};
+
+// another function expression
+let add3 = (num1, num2) => {
+    return num1 + num2;
+};
+
+// arrow function
+let add4 = (num1, num2) => num1 + num2; 
+
+console.log(add(5, 10)); // 15
+console.log(add2(5, 10)); // 15
+console.log(add3(5, 10)); // 15
+console.log(add4(5, 10)); // 15
+
+
+var names = ["Avi", "Shlomi", "Margol", "Avi", "Or", "Alex"];
+var fn = (arr) => arr.filter((val) => val.length > 4);
+
+var res = fn(names);
+console.log(res); // ["Shlomi", "Margol"]
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
