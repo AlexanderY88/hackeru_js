@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Work 2</title>
+</head>
+<body>
+    <h1>Welcome to the zoo</h1>
+    <input type="number" name="width" id="width"> 
+    <br>
+    <br>
+    <img src="https://images.unsplash.com/photo-1598755257130-c2aaca1f061c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2lsZCUyMGFuaW1hbHxlbnwwfHwwfHx8MA%3D%3D" alt="Zebra" id="zebra" style="width: 400px;">
+    
+    <script>
+        // functipn set image width
+        function setImageWidth() {
+            let widthInput = document.getElementById("width");
+            let width = widthInput.value;
+            let img = document.getElementById("zebra");
+            img.style.width = width + "px";
+        }
+        document.getElementById("width").addEventListener("input", setImageWidth);
+        document.getElementById("width").addEventListener ("change", setImageWidth);
+
+    </script>
+
+<br>
+<hr>
+
+<hr>
+<h2>Another way to change image size</h2>
+<h1>Welcome to the zoo</h1>
+    <input type="number" name="width" id="width2" onchange="setImageWidth2()" placeholder="Enter width (e.g., 300)" min="50" max="800" value="400"> 
+    <br>
+    <br>
+    <img src="https://images.unsplash.com/photo-1598755257130-c2aaca1f061c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2lsZCUyMGFuaW1hbHxlbnwwfHwwfHx8MA%3D%3D" alt="Zebra" id="zebra2" style="width: 400px;">
+    
+    <script>
+        // functipn set image width
+        function setImageWidth2() {
+            let widthInput2 = document.getElementById("width2");
+            let width2 = widthInput2.value;
+            let img2 = document.getElementById("zebra2");
+            img2.style.width = width2 + "px";
+        }
+        
+
+    </script>
+
+
+<br>
+<hr>
+<h2>Food game exercise 2</h2>
+<div id="container" style="display: flex; align-items: center; justify-content: center;">
+    <div id="imageContainer">
+        <img src="https://cdn.pixabay.com/photo/2022/04/25/00/04/game-7154684_640.png" alt="gamepad image" style="width: 300px; height: 200px; margin: 20px;" id="GameImage">
+    </div>
+    <div id="gameFields">
+        <h2 id="food">Food: 0</h2>
+        <h2 id="money">Money: 100</h2>
+        <name id="name">Alex</name>
+        <div id="buttonsContainer">
+            <button id="buyFood" onclick="buyFood()">Buy Food</button>
+            <button id="askForMoney" onclick="askForMoney()">Ask For Money</button>
+            <button id="reset" onclick="resetGame()">Reset Game</button>
+        </div>
+    </div>
+    
+
+    <script>
+        let food = 0;
+        let money = 100;
+
+        function updateDisplay() {
+            document.getElementById("food").innerText = "Food: " + food;
+            document.getElementById("money").innerText = "Money: " + money;
+        }
+        function buyFood() {
+            money -= 10;
+            food += 5;
+            updateDisplay();
+        }
+        function askForMoney() {
+            money += 20;
+            food -= 5;
+            if (food < 0) {
+                food = 0;
+            }
+            updateDisplay();
+        }
+
+        function resetGame() {
+            food = 0;
+            money = 100;
+            updateDisplay();
+        }
+
+
+    </script>
+
+
+</div>
+
+    
+</body>
+</html>

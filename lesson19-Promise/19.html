@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetTimeout and SetInterval</title>
+</head>
+<body>
+    
+<script>
+
+// console.log('====================================');
+// console.log("Check exercise 1");
+// console.log('====================================');
+// setTimeout(() => {
+//     console.log("This message is delayed by 3 seconds but for it in first position in code");
+// }, 3000);
+// console.log("This message appears immediately");
+
+
+// console.log('====================================');
+// console.log("Collbacks - the problem: ");
+// console.log('====================================');
+// // callbacks - need to synchronize between two functions
+
+// setTimeout(() => {
+// //     console.log("This message is delayed by 3 seconds but for it in second position in code");
+// // }, 3000);
+// // console.log("I'm last");
+
+// console.log('====================================');
+// console.log("Collbacks - the answer: ");
+// console.log('====================================');
+
+// let printFirst = () => {
+//     setTimeout(() => {
+//         console.log("This message is delayed by 3 seconds but for it in first position in code");
+//     }, 3000);
+// };
+
+// let printLast = () => {
+//     console.log("I'm last");
+// };
+
+// console.log("Collbacks - the first answer, simple version");
+
+// let printFirst2 = () => {
+//     setTimeout(() => {
+//         console.log("This message is delayed by 3 seconds but for it in first position in code");
+//         printLast2();
+//     }, 3000);
+// };
+
+// let printLast2 = () => {
+//     console.log("I'm last");
+// };
+// printFirst2();
+
+//console.log("Collbacks - the second answer, complex version");
+// let printFirst3 = (callback) => {
+//     setTimeout(() => {
+//         console.log("I'm first");
+//         callback();
+//     }, 2000);
+// };
+
+// let printLast3 = () => {
+//     console.log("I'm last");
+// };
+
+// console.log("Collbacks - the third answer, complex version with function as parameter");
+
+// printFirst3(printLast3);
+
+// // For the first function, we pass the second function as a parameter.
+// // This way, we can control the order of execution.
+
+// console.log('====================================');
+
+// // class promise in hebrew: מחלקה שמבטיחה ביצוע פעולה שנייה 
+
+// console.log("Promises - the problem: ");
+// console.log('====================================');
+// rewsolve in hebrew: מימוש
+// reject in hebrew: דחייה
+// 3 types of promise: 1. pending, 2. resolved, 3. rejected
+// pending: הבטחה לא מומשה
+// resolved: הבטחה מומשה
+// rejected: הבטחה נדחתה
+
+// let promise = new Promise((resolve, reject) => {
+//     // A action
+//     setTimeout(() => {
+//         console.log("I'm first - resolve");
+//         resolve(); // This will resolve the promise - if action finished successfully 
+//     }, 2000);
+// });
+
+// //promise;
+
+// promise.then(() => {
+//     // B Action
+//     console.log("I'm last");
+// });
+
+
+
+// // כתבו פרומיס שבודק האם מספר כל שהו גדול מ 54 אם כן, אנחנו במצב ריזולב. אחרת ריג'קט 
+// console.log('====================================');
+// console.log("Promises - result and reject condition");
+// console.log('====================================');
+
+
+// let grade = 56;
+
+// let gradePromise = new Promise((res, rej) => {
+//     if (grade > 54) res("You passed the exam");
+//      else rej("You failed the exam");
+// });
+
+// // then = success value 
+// gradePromise.then((message) => {
+//     console.log(message);
+// })
+// .catch((error) => {
+//     console.log(error);
+// });
+
+
+// // exercise for resolve 
+// console.log('====================================');
+// console.log('exercise for resolve ');
+
+const secret = (num) => {
+    return new Promise((resolve, reject) => {
+        if (num % 2 === 0) {
+            resolve(num + " is even!");
+        } else {
+            reject(num + " is odd!");
+        }
+    });
+};
+
+// .catch = error value when resolve not true 
+secret(10)
+.then((result) => console.log(result))
+.catch((error) => console.log(error));
+
+// secret(3)
+// .then((result) => console.log(result))
+// .catch((error) => console.log(error));
+
+// console.log('====================================');
+
+
+// // promise all - wait for all promises to resolve, more than 1 action before resolve
+// console.log("Promise all - wait for all promises to resolve");
+
+// // Action 1
+// let pasta = new Promise((res, rej) => {
+//     setTimeout(() => {
+//         res("Pasta is ready");
+//     }, 2000);
+// });
+// // Action 2
+// let souse = new Promise((res, rej) => {
+//     setTimeout(() => {
+//         res("Souse is ready");
+//     }, 3000);
+// });
+// // Action 1+2 
+// // static method - static methods are called on the class itself, not on instances of the class
+// // Promise.all - waits for all promises to resolve
+// // in the all function of class Promise need to enter array of promises in values
+// // if one of the promises is rejected, the catch will be executed
+
+// // if we want to see the result of any promise, we can use then: 
+// Promise.all([pasta, souse])
+// .then((messages) => {
+//     console.log(messages[0]);
+//     console.log(messages[1]);
+// }) // Wait for all promises to resolve
+// // catch - if any promise is rejected
+// .catch((error) => {
+//     console.log(error);
+// });
+
+// // else if we need just data to print to console, without then, we can use Promise.all without then
+// Promise.all([pasta, souse]).then((data) => {
+//     console.log(data);
+// });
+
+
+// console.log("Promise all - end");
+
+let water = false, tomato = false;
+
+let pasta2 = new Promise((res, rej) => {
+    if (water) {
+        setTimeout(() => {
+            res("Pasta is ready");
+        }, 2000);
+    } else {
+        rej("No water for pasta");
+    }
+});
+let souse2 = new Promise((res, rej) => {
+    if (tomato) {
+        setTimeout(() => {
+            res("Souse is ready");
+        }, 3000);
+    } else {
+        rej("No tomato for souse");
+    }
+}); 
+// Promise.all - waits for all promises to resolve
+Promise.all([pasta2, souse2])
+.then((messages) => {
+    console.log(messages[0]);
+    console.log(messages[1]);
+})
+.catch((error) => {
+    console.log(error);
+});
+// if one of the promises is rejected, the catch will be executed for all promises. Only if all promises are resolved, the then will be executed
+
+// HW send to Mor in mail
+
+
+
+</script>
+
+</body>
+</html>
