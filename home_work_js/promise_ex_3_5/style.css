@@ -1,0 +1,21 @@
+.cube {
+    width:18rem;
+    height:18rem;
+    background-color: lightblue;
+    border: 2px solid #000;
+    transform-style: preserve-3d;
+    animation-play-state: paused;
+    border-radius: 10px;
+    
+}
+@keyframes rotate {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+.cube.spinning {
+    animation: rotate 2s infinite linear;
+}
+
+.formHeight {
+    height: 40px;
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+<style>
+        .cube {
+    width:18rem;
+    height:18rem;
+    background-color: lightblue;
+    border: 2px solid #000;
+    transform-style: preserve-3d;
+    animation-play-state: paused;
+    border-radius: 10px;
+        
+    }
+    @keyframes rotate {
+        from { transform: rotateY(0deg); }
+        to { transform: rotateY(360deg); }
+    }
+    .cube.spinning {
+        animation: rotate 2s infinite linear;
+    }
+
+    .formHeight {
+        height: 40px;
+    }
+
+</style>
+
+
+    <title>Promise hw</title>
+</head>
+
+<body>
+
+    <h1 class="text-center h1">Exercise 3 - The cubes game</h1>
+    <div class="container card w-50 mb-5">
+        <h2 class="text-center h2 mt-3 ">Roll the cubes!</h2>
+        <div class="cubes text-center d-grid gap-2 d-md-flex justify-content-md-center gap-5 mb-3 mt-2" >
+            <div class="cube text-center align-content-around" id="cube1"><i class="fa-regular fa-question fa-6x "></i></div>
+            <div class="cube text-center align-content-around" id="cube2"><i class="fa-regular fa-question fa-6x"></i></div>
+        </div>
+        <div class="explanationText mb-2 text-center">
+            <p>
+                Click the "Start" button to begin the game. If two numbers on the cubes the same numbers - you win!
+            </p>
+            <p id="result" class="display-6">Here will be result of the game</p>
+        </div>
+        <div class="buttonContainer">
+            <button class="btn btn-primary  d-grid gap-2 col-6 mx-auto mb-5" onclick="game()">Start</button>
+        </div>
+
+    </div>
+
+ <script>
+// exercise 3 - The cubes game
+let cube1 = document.getElementById("cube1");
+let cube2 = document.getElementById("cube2");
+
+function startAnimation() {
+    cube1.classList.add('spinning');
+    cube2.classList.add('spinning');
+}
+
+function stopAnimation() {
+    cube1.classList.remove('spinning');
+    cube2.classList.remove('spinning');
+}
+
+function rollCubes() {
+    return new Promise ((res, rej) => {
+        // start the animation
+        startAnimation();
+
+        setTimeout(() => {
+            // stop the animation
+            stopAnimation();
+            // generate random numbers for the cubes
+            let randomNum = () => Math.floor(Math.random() * 6) + 1;
+            let num1 = randomNum();
+            let num2 = randomNum();
+            cube1.innerHTML = `<i class="fa-solid fa-dice-${num1} fa-6x">${num1}</i>`;
+        
+            cube2.innerHTML = `<i class="fa-solid fa-dice-${num2} fa-6x">${num2}</i>`;
+            if (num1 === num2) {
+                res("You win!");
+            } else {
+                rej("You lose!");
+            }
+        }, 3000);
+    })
+};
+
+
+
+async function game() {
+    try {
+        let result = await rollCubes();
+        document.getElementById("result").innerHTML = result;
+        document.getElementById("result").style.color = "darkgreen";
+    } catch (error) {
+        document.getElementById("result").innerHTML = error;
+        document.getElementById("result").style.color = "darkred";
+    }
+}
+
+ </script>   
+   
+ <!-- ex 4  --> 
+<hr>
+<h1 class="text-center h1 mt-5">Exercise 4 - arrayCounter</h1>
+    <div class="container card w-50 mb-5">
+        <h2 class="text-center h2 mt-3 ">Enter the items in to the array</h2>
+        <div class="cubes text-center d-grid gap-2 d-md-flex justify-content-md-center gap-5 mb-3 mt-2" >
+            <input type="text" id="itemInput" class="form-control w-50 formHeight" placeholder="Enter item" required >
+            <input type="number" id="counterInput" class="form-control w-25 formHeight" placeholder="Enter the counter number" required>
+            <button class="btn btn-primary  d-grid gap-2 col-2 mx-auto mb-2 formHeight" onclick="addItem()">Add to the list</button>
+        </div>
+        
+        <div class="explanationText mb-2 text-center">
+            <p>Click "Add to the array" for adding the item in to te array, enter counter to check the number if items in the array and press "Check" button to check if number of the items equal to the counter</p>
+            <p id="resultText" class="display-6">Here will be result </p>
+        </div>
+        <div class="itemContainer list-group w-75 mx-auto mb-5">
+            <ul id="itemsHeader" class="list-group">
+                <li id="itemList" class="list-group-item bg-secondary bg-gradient text-white">The list of items:</li>
+            </ul>
+            <ul id="itemsList" class="list-group">
+                <li id="counterList" class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <span>Here will be your items</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="buttonContainer mt-5">
+            <button class="btn btn-primary  d-grid gap-2 col-6 mx-auto mb-3" onclick="checkCounter()">Check</button>
+        </div>
+        <button class="btn btn-primary  d-grid gap-2 col-3 mx-auto mb-5" onclick="resetList()">Reset List</button>
+    </div>
+
+<script>
+// exercise 2 - arrayCounter
+// new array to store items
+let items = [];
+// fields variables
+let inputField = document.getElementById("itemInput");
+let counterField = document.getElementById("counterInput");
+let itemsList = document.getElementById("itemsList");
+
+let resetList = () => {
+    items = [];
+    itemsList.innerHTML = '';
+    inputField.value = '';
+    counterField.value = '';
+    itemsList.innerHTML = `
+    <li id="counterList" class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <span>Here will be your items</span>
+                        </div>
+                        <div class="col-auto">
+                        </div>
+                    </div>
+                </li>
+    `;
+}
+
+
+let showItems = () => {
+    itemsList.innerHTML = ``;
+    if (items.length > 0) {
+        // I failed to do this loop with "queen" or another functions because I need index of the item to remove it, so I've used the "old" For loop 
+            for (i=0; i<items.length; i++) {
+                console.log(items[i]);
+            itemsList.innerHTML += `
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <span>${items[i]}</span>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-danger btn-sm" type="button" onclick="removeItem(${i})">Remove</button>
+                        </div>
+                    </div>
+                </li>
+            `;
+        }
+    } else {
+        itemsList.innerHTML = `
+            <li id="counterList" class="list-group-item">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <span>Here will be your items</span>
+                    </div>
+                    <div class="col-auto">
+                    </div>
+                </div>
+            </li>
+        `;
+    }
+}
+
+let addItem = () => {
+    let newItem = inputField.value.trim();
+    items.push(newItem);
+    showItems();
+}
+
+let removeItem = (item) => {
+    items.splice(item, 1);
+    showItems();
+}
+
+function arrayCounter() {
+    return new Promise((result, reject) => {
+        let counter = parseInt(counterField.value);
+        if (items.length === counter) {
+            result("The number of items in the array is equal to the counter!");
+        } else if (items.length === 0) {
+            reject("The list is empty!");
+        } else {
+            reject(`The number of items in the array is ${items.length}, it is not equal to the counter ${counter}.`);
+        }
+    });
+};
+
+async function checkCounter() {
+    try {
+        let result = await arrayCounter();
+        document.getElementById("resultText").innerHTML = result;
+        document.getElementById("resultText").style.color = "darkgreen";
+    } catch (error) {
+        document.getElementById("resultText").innerHTML = error;
+        document.getElementById("resultText").style.color = "darkred";
+    } 
+}
+
+</script>
+
+<hr>
+
+<h1 class="text-center h1 mt-5">Exercise 5 - checkUser</h1>
+    <div class="container card w-50 mb-5">
+        <h2 class="text-center h2 mt-3 ">Enter the users details here</h2>
+        <div class="cubes text-center d-grid gap-2 d-md-flex justify-content-md-center gap-5 mb-3 mt-2" >
+            <input type="text" id="userName" class="form-control w-25 formHeight" placeholder="Enter username" required >
+            <input type="text" id="userPassword" class="form-control w-25 formHeight" placeholder="Enter password" required>
+            <button class="btn btn-primary  d-grid gap-2 col-2 mx-auto mb-2 formHeight w-50" onclick="checkLogin()">Login button</button>
+        </div>
+        
+        <div class="explanationText mb-2 text-center">
+            <p>Enter an username and password, click login button.</p>
+            <p id="loginResult" class="display-6">Here will be users email or  error message </p>
+        </div>
+        <div class="itemContainer list-group w-75 mx-auto mb-5">
+            <ul id="itemsHeader" class="list-group">
+                <li id="usersListHeader" class="list-group-item bg-secondary bg-gradient text-white">The list of existing users:</li>
+            </ul>
+            <ul id="usersList" class="list-group">
+                
+            </ul>
+        </div>
+        
+    </div>
+
+<script>
+// exercise 5 - checkUser
+
+let userName = document.getElementById("userName").value;
+let userPassword = document.getElementById("userPassword").value;
+let usersList = document.getElementById("usersList");
+
+let users = [
+    { username: "alex", password: "password123", email: "alex@gmail.com"},
+    { username: "margol", password: "password321", email: "margol@gmail.com" },
+    { username: "avi", password: "password111", email: ""}
+];
+
+let showUsers = () => {
+    for (user in users) {
+        let email; 
+        if (users[user].email.length > 0) {
+            email = true ;
+        } else {
+            email = false;
+        }
+        usersList.innerHTML += `
+        <li id="userDetails" class="list-group-item">Username: ${users[user].username}, password: ${users[user].password}, email provided: ${email}</li>
+        `
+    }
+}
+// show users from array 
+showUsers();
+
+let checkUser = () => {
+    return new Promise((resolve, reject) => {
+        let userName = document.getElementById("userName").value.trim();
+        let userPassword = document.getElementById("userPassword").value.trim();
+        let foundUser = null;
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].username === userName && users[i].password === userPassword) {
+                foundUser = users[i];
+            }
+        }
+        if (!foundUser) {
+            reject("Username or password is incorrect!");
+        } else if (!foundUser.email || foundUser.email.length === 0) {
+            reject("Email not provided!");
+        } else {
+            resolve(foundUser.email);
+        }
+    });
+}
+
+
+
+
+let checkLogin = async () => {
+    setTimeout(async () => {
+        try {
+            let user = await checkUser();
+            document.getElementById("loginResult").innerHTML = user;
+            document.getElementById("loginResult").style.color = "darkgreen";
+            alert("Login successful!");
+        } catch (error) {
+            document.getElementById("loginResult").innerHTML = error;
+            document.getElementById("loginResult").style.color = "darkred";
+        }
+    }, 2000);
+}
+
+
+</script>
+
+
+</body>
+</html>

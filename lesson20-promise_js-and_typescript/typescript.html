@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+<script>
+// how to run typescript in visual studio code
+// 1. Install TypeScript globally: npm install -g typescript
+// 2. Create a tsconfig.json file in your project directory
+// link to download file: https://nodejs.org/en/download/ 
+// 3. Write your TypeScript code in a .ts file
+// 4. Compile the TypeScript code to JavaScript using the command: tsc yourfile.ts
+// 5. Run the compiled JavaScript code using Node.js: node yourfile.js
+// while installing press next => next => next .... 
+// check node version: CMD => node -v
+// check npm version: CMD => npm -v
+// open CMD: window + R => type cmd => enter
+// update npm: CMD => npm install -g npm
+// link:  https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
+// installing in VS : in terminal type: npm i -g typescript (where -g is global installation)
+// another way to install typescript in VS code is to type in terminal:  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+// create a tsconfig.json file in your project directory
+// to create tsconfig.json file: CMD => tsc --init   - it creates a tsconfig.json file with default settings in your project directory, main folder
+// to compile typescript file: CMD => tsc yourfile.ts
+// creating new file:  script.ts in a folder you need
+// to run the compiled javascript file: CMD => node script.js 
+// to run a file: 
+// open the terminal in VS code: CTRL + ` , change to relevant folder: cd lesson20-promise_js-and_typescript
+// to run the file: node script.js
+// to run typescript file: CMD => tsc script.ts 
+// to check the file, type in terminal: tsc script.ts --watch - it will watch the file for changes and compile it automatically
+// to run the file: CMD => node script.js
+// tsc --init - it creates a tsconfig.json file with default settings in your project directory, main folder
+
+
+/*
+    HOW TO RUN!!!
+    # Navigate to your file directory
+    cd "d:\HackerU\WebDev\JSModul\hackeru_js\lesson20-promise_js-and_typescript"
+
+    # Compile TypeScript to JavaScript
+    tsc script.ts
+
+    # Run the compiled JavaScript
+    node script.js
+
+    TO INTEGRATE TYPESCRIPT IN HTML: < src="script.js"><//script>
+    THIS WILL ADD THE COMPILED JAVASCRIPT FILE TO YOUR HTML FILE AND NODE WILL RUN IT AUTOMATICALLY. WE DON'T NEED TO TOUCH THE JS FILE, IT HAS BEEN COMPILED FROM THE TS FILE.
+    
+*/
+
+/*
+how to run typescript in visual studio code:
+npm i -g typescript
+חד פעמית, לא צריך להריץ שוב
+
+tsc --init
+tsc script.ts --watch
+להריץ עבור כל פרויקט שמכיל קובץ ts
+
+after watch: the console in browser will show the changes automatically, no need to refresh the page, takes from js file but we don't need to touch it, it has been compiled from the ts file
+*/ 
+
+
+</script>
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
