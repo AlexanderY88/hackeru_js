@@ -21,6 +21,7 @@ animal = [1, 2, 3];
 console.log(animal);
 
 
+
 // let value: any = 80;
 // value.toUpperCase(); // error after compiling - in the web page
 
