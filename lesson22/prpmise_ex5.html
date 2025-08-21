@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson22</title>
+</head>
+<body>
+
+    <h1>Promise ex 5 </h1>
+
+    <script>
+        let users = [
+            {email: "margol@gmail.com", password: "Aa1234"},
+            {email: "avi@gmail.com", password: "Ab1313"},
+            {email: "alex@gmail.com", password: "Ac1414"}
+        ];
+
+        function checkUser(users, user){
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let indexToFind = users.findIndex((u) => u.email === user.email && u.password === user.password);
+                    if (indexToFind != -1) resolve(user.email);
+                    else reject("User not found");
+                }), 2000
+            })
+        } 
+
+        async function mainCheck() {
+            try {
+                let result = await checkUser(users, {
+                    email: "margol@gmail.com",
+                    password: "Aa1234"
+                });
+                alert(`Welcome ${result}`);
+            } catch (error){
+                alert(error.message);
+            }
+        };
+
+
+
+
+    </script>
+</body>
+</html>
