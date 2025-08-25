@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex2 q1</title>
+</head>
+<body>
+    <!-- https://axios-http.com/docs/intro -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Thumbnail</th>
+        </thead>
+        <tbody id="photos">
+            
+        </tbody>
+    </table>
+
+    <script>
+        // GET request to all photos and print their names to console
+
+        axios
+            .get("https://jsonplaceholder.typicode.com/photos?albumId=1")
+            .then((res) => showPhotos(res.data))
+            .catch((err) => console.log(err));
+
+        function showPhotos(photos){
+            for (let photo of photos) {
+                document.getElementById("photos").innerHTML += `
+                <tr>
+                    <td>${photo.id}</td>
+                    <td>${photo.title}</td>
+                    <td><img src="${photo.thumbnailUrl}" alt="${photo.title}"></td>
+                </tr>
+                `;
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>

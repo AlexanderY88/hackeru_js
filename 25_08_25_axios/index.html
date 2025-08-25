@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://axios-http.com/docs/intro</title>
+</head>
+<body>
+
+
+    <!-- https://axios-http.com/docs/intro -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
+    <script>
+        // GET request to all users and print their names to console
+        axios
+            .get("https://jsonplaceholder.typicode.com/users")
+            .then((response) => {
+                if(response.status == 200) {
+                    //console.log(response);
+                    for (let user of response.data) {
+                        console.log(`${user.name}, user ID: ${user.id}`);
+                    }
+                }
+                
+            })
+            .catch((err) => console.log(err));
+
+
+            // POST request to add new todo
+            console.log("Adding new todo...");
+
+            axios.post("https://jsonplaceholder.typicode.com/todos", {
+                userId: 3,
+                title: "להכין חומוס",
+                completed: false
+            })
+            .then((response) => {
+                if(response.status == 201) {
+                    console.log("Todo added:", response.data);
+                }
+            })
+            .catch((err) => console.log(err));
+
+    </script>
+
+<h2>To-do list from API (only not completed):</h2>
+<ul id="todo-list">
+    <!-- <li><strong>To-do list:</strong></li> -->
+</ul>
+
+<script>
+    let todoList = document.getElementById("todo-list");
+    axios.get("https://jsonplaceholder.typicode.com/todos")
+            .then((response) => {
+                if(response.status == 200) {
+                    for (let todo of response.data) {
+                        if(!todo.completed) {
+                            todoList.innerHTML += `<li>${todo.title}</li>`;
+                        }
+                    }
+                }
+            })
+            .catch((err) => console.log(err));
+</script>
+
+<h2>To-do list from API (only completed):</h2>
+<ul id="todo-list2">
+    <!-- <li><strong>To-do list:</strong></li> -->
+</ul>
+
+<script>
+    let todoList2 = document.getElementById("todo-list2");
+    axios.get("https://jsonplaceholder.typicode.com/todos")
+            .then((response) => {
+                if(response.status == 200) {
+                    for (let todo of response.data) {
+                        if(todo.completed) {
+                            todoList2.innerHTML += `<li><del>${todo.title}</del></li>`;
+                        }
+                    }
+                }
+            })
+            .catch((err) => console.log(err));
+</script>
+
+
+<script>
+    console.log("Updating user details...");
+    // PUT request to update details for user 5
+    async function updateUserDetails(id){
+        try {
+            let response = await axios.put(`https://jsonplaceholder.typicode.com/users/${id}`,
+            {name: "Margol", email: "margol@example.com", website: "margol.com"});
+            if(response.status == 200) {
+                console.log("User updated:", response.data);
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    //updateUserDetails(5);
+
+
+    // patch
+    // request to change userId of album from num4 to 4
+    async function updateAlbum(id, userId, title){
+        try {
+            let response = await axios.patch(`https://jsonplaceholder.typicode.com/albums/${id}`,{
+                userId: userId,
+                title: title
+            });
+            if(response.status == 200) {
+                console.log("Album updated:", response.data);
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    updateAlbum(4, 4, "King of the falafel");
+
+    // DELETE request to delete a specific photo by ID 
+    async function deleteImage(id) {
+        try{
+            let res = await axios.delete(`https://jsonplaceholder.typicode.com/photos/${id}`);
+            if(id < 1 || id > 5000) {
+                console.log("Invalid ID");
+            }
+            else {
+                if(res.status == 200) {
+                    console.log(res);
+                    console.log("Image deleted:", res.data);
+                }
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    deleteImage(4999);
+
+
+</script>
+
+</body>
+</html>
