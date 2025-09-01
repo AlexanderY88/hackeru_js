@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+  <body>
+    <div class="cities" id="telAviv">Tel Aviv</div>
+    <div class="cities" id="haifa">Haifa </div>
+    <p id="pHello">Hello from paragraph</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quisquam enim omnis, expedita iure totam ipsam aperiam laudantium quia quo beatae, eos consectetur perferendis ea!</p>
+    <button id="clickBtn">Click</button>
+<style>
+    #pHello {
+        color: blue;
+    }
+</style>
+    <script>
+      // DOM - Document Object Model
+        let cities = document.getElementsByClassName("cities");
+        for (let city of cities) city.style.backgroundColor = "yellow";
+
+        let pArr = document.getElementsByTagName("p");
+        for (let i = 0; i < pArr.length; i++) pArr[i].style.color = "green";
+
+        let inputText = document.createElement("input");
+        inputText.setAttribute("value", "Alex");
+
+        document.querySelector("#haifa").appendChild(inputText);    
+
+
+        document.write("<h3>Hello</h3>");
+
+        // addEventListener
+        document.getElementById("clickBtn").addEventListener("click", () => console.log("button clicked"));
+
+        document.getElementById("telAviv").addEventListener("mouseover", () => (document.getElementById("telAviv").style.backgroundColor = "blue"));
+
+        document.getElementById("telAviv").addEventListener("mouseleave", () => (document.getElementById("telAviv").style.backgroundColor = "yellow"));
+
+        console.log(Math.sqrt(36)); // 6
+        console.log(Math.sqrt("36")); // 6
+        console.log(Math.sqrt("Hello")); // NaN = not a number 
+        console.log(isNaN(9));
+        console.log(isNaN("Hello"));
+        console.log(isNaN("9"));
+
+        let num1 = 7, num2 = "7";
+        console.log(typeof num1);
+        console.log(typeof num2);
+
+        // rest params - example - works because it allows for variable number of arguments in array
+        function printParams(...args) {
+            for (let arg of args) console.log(arg);
+        }
+        printParams(10, 12);
+        printParams("Hello","2", "3");
+
+        // nullish operator
+        // check if something is null or undefined
+        let amount = document.getElementById("amount");
+        amount = amount ?? 0;
+        console.log(amount); // 0
+        
+        let grades = [90, 80, 100];
+        let grades2 = grades;
+        grades2[1] = 20;
+        console.log(grades);
+
+        function myFunc() {
+            myVariable = "Hey";
+            console.log(myVariable);
+        }
+        myFunc();
+        console.log(myVariable);
+
+        // ternary operator
+        console.log(typeof "abc" == "string" ? "abc" : "no string");
+
+        // object destructuring - not important order of items, but important name 
+        let data = {
+            company: "intel",
+            amtOfEmp: 30000
+        }
+        
+        let {company} = data;
+        console.log(company);
+
+        // array destructuring - not important name, but very important order 
+        let arr = [12, true, "abc"];
+        let [item1, item2, item3] = arr;
+        console.log(item3);
+
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            sleep() {
+                console.log(`${this.name} is sleeping`);
+            }
+            eat() {
+                console.log(`${this.name} is eating`);
+            }
+        }
+        
+        class Employee extends Person {
+            constructor(name, age, department) {
+                super(name, age);
+                this.department = department;
+            }
+            work() {
+                console.log(`${this.name} is working`);
+            }
+            eat() {
+                super.eat();
+                console.log(`${this.name} is in break until 2pme`);
+            }
+        }
+
+        let p = new Person("David", 21);
+        let e = new Employee("Netanel", 25, "Factory sorting");
+
+        p.eat();
+        e.eat();
+
+
+        // promise: than, catch and finally 
+        //let promise = new Promise()
+
+
+        const items = ["item1", "item2", "item3"];
+        const copyItems = [];
+
+        items.forEach((item) => {
+            copyItems.push(item);
+        })
+
+        console.log(copyItems);
+
+        
+
+    </script>
+  </body>
+</html>
